@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>考研英语作文宝典 · AI归来模板</title>
+<style>
+:root{
+  --fs:16px;
+  --bg:#F7F3EA;          /* 象牙米白 */
+  --bg2:#EFE9DB;
+  --card:#FFFDF8;        /* 暖白 */
+  --card2:#F9F4E9;
+  --red:#8C2F45;         /* 勃艮第酒红·主色 */
+  --red2:#6A1F33;        /* 深酒红 */
+  --red3:#4C1324;        /* 最深酒红 */
+  --red-soft:#F1E2E7;    /* 淡酒红 */
+  --ink:#2E2A28;
+  --ink2:#6B625B;
+  --line:#E5DAC6;
+  --line2:#D6C7AC;
+  --green:#3E7152;
+  --gold:#B08A3E;        /* 香槟金 */
+  --gold-soft:#F6EEDC;
+  --shadow:0 2px 12px rgba(90,50,45,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:var(--fs)}
+body{
+  margin:0;color:var(--ink);
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 6% 0%, rgba(140,47,69,.055) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 100% 8%, rgba(176,138,62,.09) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 45% at 50% 100%, rgba(140,47,69,.045) 0%, transparent 70%);
+  background-attachment:fixed;
+  font-family:"黑体","SimHei","Heiti SC","Microsoft YaHei",sans-serif;
+  font-weight:700;line-height:1.6;padding-bottom:calc(4.2rem + env(safe-area-inset-bottom));
+}
+.en{font-family:"Times New Roman",Times,serif;font-weight:400}
+button,input,select,textarea{font-family:inherit;font-size:1rem;color:var(--ink)}
+button{cursor:pointer;border:none;background:none}
+
+/* 顶栏：深酒红渐变 + 香槟金细边 + 微光装饰 */
+header{
+  position:sticky;top:0;z-index:50;overflow:hidden;
+  background:linear-gradient(120deg,#9C3450 0%,#7A2439 48%,#5E1A2C 100%);
+  color:#FBF3E4;padding:calc(.7rem + env(safe-area-inset-top)) .9rem .7rem;
+  border-bottom:3px solid var(--gold);
+  box-shadow:0 3px 16px rgba(76,19,36,.28);
+}
+header::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 82% 15%,rgba(255,255,255,.16) 0%,transparent 38%),
+    repeating-linear-gradient(115deg,rgba(255,255,255,.035) 0 2px,transparent 2px 14px);
+}
+header .hd-row,header .fontbar{position:relative;z-index:1}
+.hd-row{display:flex;align-items:center;gap:.6rem}
+.hd-title{font-size:1.2rem;letter-spacing:.06em;flex:1;text-align:center;
+  text-shadow:0 1px 2px rgba(76,19,36,.5)}
+.hd-sub{font-size:.72rem;opacity:.88;text-align:center;font-weight:400;letter-spacing:.08em}
+.icon-btn{width:2.25rem;height:2.25rem;border-radius:.6rem;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#FBF3E4;
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex:none;
+  backdrop-filter:blur(4px)}
+.icon-btn:active{background:rgba(255,255,255,.28)}
+
+/* 字体调节条 */
+.fontbar{display:none;align-items:center;gap:.6rem;margin-top:.6rem;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);
+  padding:.5rem .7rem;border-radius:.7rem;font-size:.85rem;color:#FBF3E4}
+.fontbar.show{display:flex}
+.fontbar .fb-label{white-space:nowrap;opacity:.95}
+.fontbar input[type=range]{flex:1;accent-color:#F0D9A8}
+.fontbar .fb-size{min-width:3.2rem;text-align:center;font-family:"Times New Roman",serif}
+
+/* 主区 */
+main{max-width:1100px;margin:0 auto;padding:.9rem .9rem 2rem}
+.page{display:none;animation:fade .25s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* 分段控制 */
+.seg{display:flex;background:var(--card2);border:1.5px solid var(--line);border-radius:.85rem;
+  padding:.22rem;gap:.22rem;margin-bottom:.9rem;position:sticky;top:calc(3.6rem + env(safe-area-inset-top));z-index:30;
+  box-shadow:var(--shadow)}
+.seg button{flex:1;padding:.55rem .3rem;border-radius:.65rem;color:var(--ink2);font-size:.92rem;
+  transition:.15s;white-space:nowrap}
+.seg button.on{background:var(--red);color:#FBF3E4;font-weight:700;
+  box-shadow:0 2px 8px rgba(140,47,69,.28)}
+.seg.sub{top:calc(6.6rem + env(safe-area-inset-top));background:#FCF8EE}
+
+/* 位置筛选条 */
+.filter-bar{display:flex;gap:.45rem;overflow-x:auto;padding:.15rem .05rem .7rem;margin-bottom:.1rem;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-bar button{flex:none;padding:.45rem .8rem;border-radius:1.4rem;font-size:.85rem;
+  background:var(--card2);border:1.5px solid var(--line2);color:var(--ink2);white-space:nowrap}
+.filter-bar button.on{background:var(--red);color:#FBF3E4;border-color:var(--red);
+  box-shadow:0 2px 7px rgba(140,47,69,.25)}
+.filter-bar button:active{transform:scale(.97)}
+
+/* 卡片 */
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:1rem;
+  padding:.85rem;margin-bottom:.8rem;box-shadow:var(--shadow);
+  background-image:radial-gradient(circle at 100% 0%,rgba(176,138,62,.055) 0%,transparent 45%)}
+.card h3{margin:0 0 .5rem;font-size:1.02rem;color:var(--red2);display:flex;align-items:center;gap:.45rem}
+.card h3::before{content:"";width:.3rem;height:.95rem;
+  background:linear-gradient(180deg,var(--gold),var(--red));border-radius:.2rem;flex:none}
+.tip{font-size:.82rem;color:var(--ink2);font-weight:400;background:var(--card2);
+  border-left:3px solid var(--gold);padding:.45rem .6rem;border-radius:.35rem;margin-bottom:.6rem}
+
+/* 句子组 */
+.grp{margin-bottom:.85rem}
+.grp:last-child{margin-bottom:0}
+.grp-name{font-size:.86rem;color:var(--red2);margin:.2rem 0 .45rem;display:flex;align-items:center;gap:.4rem}
+.grp-name::before{content:"◆";font-size:.6rem;color:var(--gold)}
+.sent{border:1.5px solid var(--line);border-radius:.75rem;padding:.6rem .7rem;margin-bottom:.5rem;
+  background:var(--card);transition:.15s;position:relative}
+.sent:last-child{margin-bottom:0}
+.sent.picked{border-color:var(--red);background:var(--red-soft);box-shadow:inset 0 0 0 1px var(--red)}
+.sent-head{display:block}
+.sent-tag{display:inline-block;font-size:.72rem;color:#8A6A22;background:var(--gold-soft);
+  border:1px solid rgba(176,138,62,.3);border-radius:.3rem;
+  padding:.05rem .4rem;margin-bottom:.35rem;font-weight:700}
+.sent-en{font-size:1.02rem;line-height:1.65;word-break:break-word;
+  font-family:"Times New Roman",Times,serif;font-weight:400;color:#2A2521}
+.blank{color:var(--red);border-bottom:2px solid var(--gold);padding:0 .15rem;
+  background:var(--red-soft);border-radius:.15rem;cursor:pointer;font-family:"Times New Roman",serif}
+.sent-zh{font-size:.8rem;color:var(--ink2);font-weight:400;margin-top:.3rem}
+.sent-actions{display:flex;gap:.4rem;margin-top:.45rem;flex-wrap:wrap}
+.mini{font-size:.75rem;padding:.25rem .55rem;border:1.2px solid var(--line2);border-radius:.45rem;
+  color:var(--ink2);background:var(--card2)}
+.mini:active{background:var(--line)}
+.mini.pick{background:var(--red);color:#FBF3E4;border-color:var(--red)}
+.sent-detail{display:none;margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--line2);font-size:.82rem}
+.sent-detail.open{display:block}
+.sent-detail .ex-en{font-family:"Times New Roman",serif;font-size:.92rem;color:var(--green);line-height:1.5}
+.sent-detail .ex-zh{color:var(--ink2);font-weight:400;margin:.2rem 0 .4rem}
+.sent-detail .note{color:var(--ink2);font-weight:400}
+.sent-detail .note b{color:var(--red2)}
+
+/* 作文抽屉 */
+.drawer-bar{position:sticky;bottom:calc(4.2rem + env(safe-area-inset-bottom));z-index:35;
+  background:var(--card2);color:var(--red2);border:1.5px solid var(--line2);border-radius:.85rem;padding:.65rem .9rem;
+  display:flex;align-items:center;gap:.6rem;box-shadow:0 4px 14px rgba(120,90,40,.14);margin-top:.8rem}
+.drawer-bar .cnt{flex:1;font-size:.88rem}
+.drawer-bar button{background:var(--red);color:#FBF3E4;border-radius:.5rem;padding:.4rem .7rem;font-size:.82rem}
+.essay-box{background:var(--card);border:1.5px solid var(--red);border-radius:.9rem;padding:.85rem;margin-top:.6rem}
+.essay-box h4{margin:0 0 .5rem;color:var(--red2);font-size:.95rem}
+.essay-para{background:var(--card2);border:1px dashed var(--line2);border-radius:.55rem;padding:.55rem .65rem;
+  margin-bottom:.5rem;font-family:"Times New Roman",serif;font-size:1rem;line-height:1.7}
+.essay-para .ph{color:#B9A98A}
+.essay-toolbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem}
+.essay-toolbar button{background:var(--red-soft);color:var(--red2);border-radius:.5rem;padding:.45rem .8rem;font-size:.85rem}
+.essay-toolbar button.primary{background:var(--red);color:#FBF3E4}
+
+/* 列表/表格 */
+.list-item{background:var(--card);border:1.5px solid var(--line);border-radius:.75rem;padding:.7rem .8rem;
+  margin-bottom:.55rem;display:flex;gap:.7rem;align-items:flex-start}
+.badge{font-size:.72rem;padding:.15rem .45rem;border-radius:.35rem;flex:none;font-weight:700;white-space:nowrap}
+.b-red{background:var(--red-soft);color:var(--red2)}
+.b-gold{background:#FBF1D8;color:#8A6414}
+.b-green{background:#E4F0E8;color:var(--green)}
+.li-body{flex:1;min-width:0}
+.li-title{font-size:.95rem;color:var(--ink);margin-bottom:.15rem}
+.li-en{font-family:"Times New Roman",serif;font-size:.9rem;color:var(--green);font-weight:400}
+.li-zh{font-size:.78rem;color:var(--ink2);font-weight:400}
+
+/* 词汇表 */
+.word-grid{display:grid;grid-template-columns:1fr;gap:.55rem}
+.wg-head{background:var(--red-soft);color:var(--red2);border-left:3px solid var(--red);border-radius:.5rem;
+  padding:.55rem .8rem;font-size:.92rem}
+.wg-head small{display:block;font-weight:400;opacity:.85;font-family:"Times New Roman",serif;font-size:.8rem}
+.wrow{display:flex;gap:.6rem;padding:.4rem .5rem;border-bottom:1px dashed var(--line);font-size:.88rem}
+.wrow:last-child{border:none}
+.wrow .zh{width:42%;color:var(--ink2);font-weight:400}
+.wrow .en{width:58%;font-family:"Times New Roman",serif;color:var(--green);word-break:break-word}
+.wsentence{background:#FBF1D8;border-radius:.5rem;padding:.5rem .6rem;margin-top:.4rem;font-size:.85rem}
+.wsentence .en{display:block;font-family:"Times New Roman",serif;font-size:.95rem;color:var(--red2);margin-top:.2rem}
+
+/* 表单 */
+.field{margin-bottom:.85rem}
+.field label{display:block;font-size:.85rem;color:var(--red2);margin-bottom:.35rem}
+.field input,.field select,.field textarea{width:100%;padding:.6rem .7rem;border:1.5px solid var(--line2);
+  border-radius:.6rem;background:#FFFDF6;outline:none;font-size:.95rem}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red)}
+.field textarea{min-height:140px;resize:vertical;line-height:1.6}
+.hint-sm{font-size:.76rem;color:var(--ink2);font-weight:400;margin-top:.3rem}
+.btn{width:100%;padding:.7rem;border-radius:.7rem;background:var(--red);color:#FBF3E4;font-size:.98rem;margin-top:.3rem}
+.btn:active{background:var(--red2)}
+.btn.ghost{background:var(--card2);color:var(--red2);border:1.5px solid var(--line2)}
+.btn:disabled{opacity:.5}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+
+/* 聊天 */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 12rem);min-height:22rem}
+.chat-log{flex:1;overflow-y:auto;background:var(--card);border:1.5px solid var(--line);border-radius:.8rem;
+  padding:.7rem;margin-bottom:.6rem}
+.msg{margin-bottom:.7rem;display:flex;gap:.5rem;align-items:flex-start}
+.msg .av{width:1.7rem;height:1.7rem;border-radius:.45rem;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:.8rem;color:#FBF3E4;background:var(--red)}
+.msg.user .av{background:var(--gold)}
+.msg .bubble{background:var(--card2);border-radius:.6rem;padding:.5rem .65rem;font-size:.9rem;
+  line-height:1.6;max-width:calc(100% - 2.2rem);word-break:break-word}
+.msg.user .bubble{background:#FBEFD6}
+.msg .bubble pre{white-space:pre-wrap;font-family:"Times New Roman",serif;font-weight:400;
+  font-size:.9rem;margin:0}
+.chat-input{display:flex;gap:.5rem}
+.chat-input textarea{flex:1;padding:.6rem;border:1.5px solid var(--line2);border-radius:.6rem;
+  background:#FFFDF6;resize:none;height:2.8rem;line-height:1.4;font-size:.92rem;outline:none}
+.chat-input button{background:var(--red);color:#FBF3E4;border-radius:.6rem;padding:0 1rem;font-size:.9rem}
+.quick-q{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.4rem;margin-bottom:.5rem}
+.quick-q button{flex:none;background:var(--card2);border:1px solid var(--line2);border-radius:1rem;
+  padding:.3rem .7rem;font-size:.78rem;color:var(--ink2)}
+
+/* 评分结果 */
+.score-res{background:var(--card);border:1.5px solid var(--line);border-radius:.9rem;padding:.9rem;margin-top:.8rem}
+.score-num{font-family:"Times New Roman",serif;font-size:2.4rem;color:var(--red);text-align:center;line-height:1}
+.score-label{text-align:center;color:var(--ink2);font-size:.82rem;margin-bottom:.6rem}
+.md-body{font-weight:400;font-size:.92rem;line-height:1.7;color:var(--ink)}
+.md-body h1,.md-body h2,.md-body h3{color:var(--red2);font-weight:700;font-size:1.05rem;margin:.8rem 0 .3rem}
+.md-body p{margin:.35rem 0}
+.md-body ul,.md-body ol{margin:.35rem 0;padding-left:1.3rem}
+.md-body strong{color:var(--red2)}
+.md-body code{font-family:"Times New Roman",serif;background:var(--card2);padding:0 .2rem;border-radius:.2rem}
+
+/* 底部导航 */
+nav{position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--card);
+  border-top:1px solid var(--line);display:flex;padding:.35rem .2rem calc(.35rem + env(safe-area-inset-bottom));
+  box-shadow:0 -2px 14px rgba(76,19,36,.08)}
+nav::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:2.5rem;height:2px;background:linear-gradient(90deg,var(--gold),var(--red),var(--gold));border-radius:0 0 2px 2px}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:.12rem;color:var(--ink2);font-size:.72rem;padding:.2rem}
+nav button .ni{font-size:1.25rem;line-height:1}
+nav button.on{color:var(--red);font-weight:700}
+
+/* 弹层 */
+.mask{position:fixed;inset:0;background:rgba(42,38,34,.5);z-index:80;display:none;
+  align-items:center;justify-content:center;padding:1rem}
+.mask.show{display:flex}
+.modal{background:var(--card);border-radius:1.1rem;padding:1.2rem;max-width:420px;width:100%;
+  border:1px solid var(--line);border-top:4px solid var(--red);
+  box-shadow:0 14px 44px rgba(76,19,36,.3);max-height:85vh;overflow-y:auto}
+.modal h3{margin:0 0 .7rem;color:var(--red2);display:flex;align-items:center;gap:.4rem}
+.modal h3::before{content:"";width:.28rem;height:1rem;background:var(--gold);border-radius:.2rem}
+.modal .btn{margin-top:.8rem}
+.toast{position:fixed;left:50%;bottom:5.5rem;transform:translateX(-50%);background:var(--ink);
+  color:#FBF3E4;padding:.55rem 1rem;border-radius:2rem;font-size:.85rem;z-index:100;opacity:0;
+  transition:.25s;pointer-events:none;max-width:85%;text-align:center}
+.toast.show{opacity:1}
+
+/* iPad 及桌面优化 */
+@media(min-width:768px){
+  main{padding:1.2rem 1.5rem 2rem}
+  .hd-title{font-size:1.35rem}
+  .card{padding:1.1rem}
+  .word-grid{grid-template-columns:1fr 1fr}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;align-items:start}
+  .seg button{font-size:1rem;padding:.65rem}
+  .chat-wrap{height:calc(100vh - 14rem)}
+}
+@media(min-width:1024px){
+  .word-grid{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-row">
+    <button class="icon-btn" id="btnFont" title="字体大小">A<span style="font-size:.6rem">±</span></button>
+    <div style="flex:1">
+      <div class="hd-title">考研英语作文宝典</div>
+      <div class="hd-sub">模板 · 真题 · AI评分　|　资料来源：AI归来</div>
+    </div>
+    <button class="icon-btn" id="btnSet" title="AI设置">⚙</button>
+  </div>
+  <div class="fontbar" id="fontbar">
+    <span class="fb-label">字体大小</span>
+    <input type="range" id="fontRange" min="13" max="24" step="1" value="16">
+    <span class="fb-size" id="fontSize">16px</span>
+    <button class="icon-btn" id="fontReset" style="width:1.8rem;height:1.8rem;font-size:.7rem">重置</button>
+  </div>
+</header>
+
+<main>
+  <!-- 模板页 -->
+  <section class="page active" id="page-tpl">
+    <div class="seg" id="segBigSmall">
+      <button class="on" data-v="big">大作文</button>
+      <button data-v="small">小作文</button>
+    </div>
+    <div id="bigWrap">
+      <div class="seg sub" id="segBigType">
+        <button class="on" data-v="chart">图表作文</button>
+        <button data-v="cartoon">图画(漫画)作文</button>
+        <button data-v="text">文字作文</button>
+      </div>
+    </div>
+    <div id="smallWrap" style="display:none">
+      <div class="seg sub" id="segSmallType">
+        <button class="on" data-v="letter">书信</button>
+        <button data-v="notice">通知/告示</button>
+        <button data-v="minutes">纪要</button>
+      </div>
+    </div>
+    <div id="tplFilter" class="filter-bar"></div>
+    <div id="tplList"></div>
+    <div class="drawer-bar" id="drawerBar">
+      <span class="cnt" id="essayCnt">已选 0 句 · 点句子加入作文</span>
+      <button id="btnViewEssay">查看作文</button>
+    </div>
+    <div id="essayArea" style="display:none"></div>
+  </section>
+
+  <!-- 真题页 -->
+  <section class="page" id="page-zhenti">
+    <div class="seg" id="segZtType">
+      <button class="on" data-v="big">大作文真题</button>
+      <button data-v="small">小作文真题</button>
+      <button data-v="topic">主题词速查</button>
+    </div>
+    <div id="ztList"></div>
+  </section>
+
+  <!-- 评分页 -->
+  <section class="page" id="page-score">
+    <div class="card">
+      <h3>AI 作文评分</h3>
+      <div class="tip">依据考研英语大纲写作要求与「高分准则」（卷面整洁 · 结构清晰 · 语言丰富 · 拼写正确 · 契合主题）进行点评。需先在右上角 ⚙ 配置 API。</div>
+      <div class="row2">
+        <div class="field"><label>考试类型</label>
+          <select id="scoreExam">
+            <option value="英语一 大作文（20分·160~200词）">英语一 大作文（20分）</option>
+            <option value="英语二 大作文（15分·约150词）">英语二 大作文（15分）</option>
+            <option value="英语一/二 小作文（10分·约100词）">小作文（10分）</option>
+          </select>
+        </div>
+        <div class="field"><label>作文题型</label>
+          <select id="scoreKind">
+            <option>图表作文</option><option>图画(漫画)作文</option><option>文字作文</option>
+            <option>书信</option><option>通知/告示</option><option>纪要</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>作文题目 / 要求（选填，粘贴题干有助于精准评分）</label>
+        <textarea id="scorePrompt" style="min-height:80px" placeholder="粘贴历年真题题干或写作要求…"></textarea>
+      </div>
+      <div class="field"><label>你的作文</label>
+        <textarea id="scoreEssay" placeholder="在此粘贴或输入你的英语作文…"></textarea>
+      </div>
+      <button class="btn" id="btnScore">开始 AI 评分</button>
+      <div class="hint-sm" id="scoreHint">提示：可先在「模板」页拼好作文，点击“复制到评分”自动带入。</div>
+    </div>
+    <div id="scoreResult"></div>
+  </section>
+
+  <!-- AI 问答页 -->
+  <section class="page" id="page-chat">
+    <div class="card" style="padding:.7rem">
+      <div class="quick-q" id="quickQ">
+        <button>图表第一段怎么写？</button>
+        <button>第二段原因有哪些方案？</button>
+        <button>帮我改写这段文字</button>
+        <button>六大方面有哪些？</button>
+        <button>如何凑够200词？</button>
+      </div>
+      <div class="chat-wrap">
+        <div class="chat-log" id="chatLog">
+          <div class="msg"><div class="av">AI</div><div class="bubble">你好！我是基于「AI归来」考研英语作文模板的 AI 助手。你可以问我模板套用、句子改写、主题词、评分建议等问题。请先确保已在 ⚙ 配置好 API。</div></div>
+        </div>
+        <div class="chat-input">
+          <textarea id="chatInput" placeholder="输入你的问题…"></textarea>
+          <button id="btnSend">发送</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav>
+  <button class="on" data-p="tpl"><span class="ni">▤</span>模板</button>
+  <button data-p="zhenti"><span class="ni">◈</span>真题</button>
+  <button data-p="score"><span class="ni">✎</span>评分</button>
+  <button data-p="chat"><span class="ni">✦</span>AI问答</button>
+</nav>
+
+<!-- 设置弹层 -->
+<div class="mask" id="setMask">
+  <div class="modal">
+    <h3>AI 接口设置</h3>
+    <div class="tip">接口地址已内置，通常只需填写 API Key。配置仅保存在本机浏览器，不会上传。</div>
+    <div class="field"><label>服务商</label>
+      <select id="cfgProvider">
+        <option value="deepseek">DeepSeek（推荐）</option>
+        <option value="custom">自定义（OpenAI 兼容）</option>
+      </select>
+    </div>
+    <div class="field"><label>接口地址 Base URL</label>
+      <input id="cfgBase" value="https://api.deepseek.com">
+      <div class="hint-sm">DeepSeek 官方：https://api.deepseek.com（已填好，一般无需改）</div>
+    </div>
+    <div class="field"><label>模型</label>
+      <select id="cfgModel">
+        <option value="deepseek-flash">deepseek-flash（最新·快速）</option>
+        <option value="deepseek-v4-pro">deepseek-v4-pro（最新·强推理）</option>
+        <option value="__custom__">自定义（官方更新模型时用）</option>
+      </select>
+      <input id="cfgModelCustom" style="display:none;margin-top:.5rem" placeholder="输入最新模型名称">
+      <div class="hint-sm">已按官方文档保留最新模型；若日后官方发布新模型，选“自定义”填入即可。</div>
+    </div>
+    <div class="field"><label>API Key</label>
+      <input id="cfgKey" type="password" placeholder="sk-xxxxxxxxxxxxxxxx">
+      <div class="hint-sm">在 platform.deepseek.com 申请，仅存本地。</div>
+    </div>
+    <button class="btn" id="btnSaveCfg">保存设置</button>
+    <button class="btn ghost" id="btnTestCfg">测试连接</button>
+  </div>
+</div>
+
+<!-- 通用弹层（查看句子/填空） -->
+<div class="mask" id="commonMask">
+  <div class="modal" id="commonModal"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= 数据区（内容全部取自所上传的四份PDF资料） ================= */
+const DATA = {};
+DATA.templates = {"big:chart": {"name": "大作文 · 图表作文模板", "tip": "第一段：总体描述＋细节描述＋社会现象；第二段：过渡句＋原因123；第三段：总结全文＋具体措施＋畅想未来。爸爸说：图画、图表、文字本质都是议论文，只是第一段不同。点击句子下划空白处可填写主题词/年份/数据，勾选句子即可拼成作文。", "parts": [{"name": "首段 · 第1句 总体描述", "tip": "用一句话概括图表的标题、图例、数据、时间四要素。按场景选择：动态·单方向 / 动态·多方向 / 静态图 / 双图表 / 万能场景。下划线处填主题词、年份。", "groups": [{"name": "动态·单方向（如 2023 英二 健康素养 8.8%→25.4%）", "items": [["c1a1", "待选1 Which从句", "The chart above illustrates the changes in ____ from ____ to ____, during which it rose steadily.", "上表展示了____至____间____的变化，其在这一时期稳步上升。", "主题词需是实体（快递业/城市/国家/品牌）；若主题词是数据（水平/率/比例/数量），改用时间作主语：The period from…to… saw a steady rise in ____。", "The line chart above illustrates the changes in Chinese residents' health literacy level from 2012 to 2021, during which it rose steadily.", "上方折线图展示了2012至2021年间中国居民健康素养水平的变化，其在这一时期稳步上升。"], ["c1a2", "待选2 趋势作宾语", "____ saw a steady rise from ____ to ____, as illustrated in the chart.", "如该图表所示，____在____至____间稳步上升。", "主语改为时间：The period from ____ to ____ saw a steady rise in ____。", "The period from 2012 to 2021 saw a steady rise in Chinese residents' health literacy level, as illustrated in the line chart.", "如折线图所示，2012至2021年间中国居民健康素养水平稳步上升。"], ["c1a3", "待选3 状语式", "According to the data given in the chart, the number of ____ climbed steadily from ____ to ____.", "根据图中数据，____的数量在____至____间稳步攀升。", "the number of 视情况替换为 the level / rate / proportion of。", "According to the data given in the line chart, the health literacy level of Chinese residents climbed steadily from 2012 to 2021.", "根据折线图数据，中国居民健康素养水平从2012到2021年稳步攀升。"]]}, {"name": "动态·多方向（如 2019 英二 毕业生选择：就业降/深造升）", "items": [["c1b1", "待选1 Among which", "The chart above illustrates the changes in ____ from ____ to ____, among which the rise in ____ was the most striking.", "上方图表展示了____至____间____的变化，其中____的上升最为显著。", "适用多个变量走向不一。", "The bar chart above illustrates the changes in graduates' choices from 2013 to 2018, among which the rise in the proportion pursuing further study was the most striking.", "上方柱状图展示了2013至2018年间毕业生选择的变化，其中深造比例的上升最为显著。"], ["c1b2", "待选2 Divergent+with", "____ experienced divergent trends from ____ to ____, with ____ rising most sharply.", "____在____至____间经历了分化性的趋势，其中____上升最为剧烈。", "", "Graduates' choices experienced divergent trends from 2013 to 2018, with the proportion pursuing further study rising most sharply.", "毕业生的选择在2013至2018年间经历了分化性趋势，其中深造比例上升最为剧烈。"], ["c1b3", "待选3 状语+对比", "As reflected in the chart, ____ moved in opposite directions from ____ to ____, ____ rising while ____ falling.", "如图中数据所示，____在____至____间朝不同方向变化，____上升而____下降。", "moved in opposite directions 可换为 diverged；若变量有三个，只写对比最鲜明的两个。", "As reflected in the chart, graduates' choices moved in opposite directions from 2013 to 2018, the proportion entering the workforce falling while that pursuing further study rising.", "如图中数据所示，毕业生的选择在2013至2018年间朝不同方向变化，就业比例下降而深造比例上升。"]]}, {"name": "静态图·占比格局（如 2024 英二 劳动实践课收获）", "items": [["c1c1", "待选1 Distribution+with", "The bar chart above presents the distribution of ____ in ____, with ____ accounting for the largest share.", "上方柱状图呈现了____年____的分布，其中____占比最高。", "记住 3D：distribution 分布 / dominance 主导 / disparity 差距。", "The bar chart above presents the distribution of students' gains from a university's labor practice course, with acquiring relevant knowledge accounting for the largest share.", "上方柱状图呈现了某高校劳动实践课学生收获的分布，其中学习相关知识占比最高。"], ["c1c2", "待选2 Dominance+with", "The pie chart above highlights the dominance of ____ in ____, with it overshadowing all other components.", "上方图表突出了____在____中的主导地位，其远超其他各项。", "仅当第一项远高于其他项（断崖式领先）时使用。", "The chart above highlights the dominance of acquiring relevant knowledge in students' gains from the labor practice course, with it overshadowing all other components.", "上方图表突出了学习相关知识在劳动实践课收获中的主导地位，其远超其他各项。"], ["c1c3", "待选3 Disparity+with", "The chart above reveals a striking disparity in ____, with the proportions ranging from ____ to ____.", "上方图表揭示了____中显著的差距，各项占比从____到____不等。", "with + 宾语 + 宾补（现在分词）。", "The chart above reveals a striking disparity in students' gains from the labor practice course, with the proportions ranging from 32.6% to 91.3%.", "上方图表揭示了劳动实践课学生收获中显著的差距，各项占比从32.6%到91.3%不等。"]]}, {"name": "双图表（如 2026 英一 养老机器人 饼图+柱状图）", "items": [["c1d1", "待选1 While并列", "The chart on the left illustrates ____, while the chart on the right presents ____.", "左侧的图展示了____，而右侧的图呈现了____。", "", "The chart on the left shows consumers' attitudes towards elderly-care robots, while the chart on the right lists their major concerns about such robots.", "左侧的图显示了消费者对养老机器人的态度，而右侧的图列出了他们对这类机器人的主要担忧。"], ["c1d2", "待选2 As for另起", "The pie chart above presents ____. As for the chart on the right, it shows ____.", "上面的饼图呈现了____。至于右侧的图，它展示了____。", "", "The pie chart above presents consumers' attitudes towards elderly-care robots. As for the chart on the right, it shows their major concerns about such robots.", "上面的饼图呈现了消费者对养老机器人的态度。至于右侧的图，它展示了他们的主要担忧。"], ["c1d3", "待选3 总分结构", "The two charts present ____: the pie chart shows ____, while the bar chart on the right lists ____.", "两幅图呈现了____：饼图显示了____，而右侧的柱状图列出了____。", "", "The two charts present 2018 to 2020 express delivery business volume, while the chart on the right presents the distribution of packaging disposal methods.", "左图展示了2018至2020年间快递业务量的变化，而右图呈现了快递包装处理方式的分布。"]]}, {"name": "万能场景（没把握/看不懂/时间紧时用）", "items": [["c1e1", "待选1 有变化", "Some remarkable/substantial changes in ____ have taken place in the past few years.", "在过去的几年中，____发生了一些显著/实质性的变化。", "", "", "\"\""], ["c1e2", "待选2 有变化", "The chart above shows/presents the variation in ____ from ____ to ____.", "上述图表展示了____至____间____的变化。", "", "", "\"\""], ["c1e3", "待选3 有变化", "The proportions/shares/numbers of ____ had visible changes during the period from ____ to ____.", "____的占比/份额/数量在____至____间发生明显变化。", "", "", "\"\""], ["c1e4", "待选4 有占比", "The chart shows the distribution of ____ at a glance, revealing a striking disparity among the options.", "该图一目了然地展示了____的分布，揭示了各项之间的巨大差异。", "", "", "\"\""], ["c1e5", "待选5 有占比", "The chart above presents ____, offering a clear picture of the overall situation.", "上方图表呈现了____，清晰地展示了整体情况。", "", "", "\"\""], ["c1e6", "待选6 有占比", "The chart above provides information about ____ from ____ to ____.", "上述图表提供了____至____间关于____的信息。", "或 situation of。", "The table above provides information about the average ownership of major durable consumer goods per 100 households in China from 2014 to 2023.", "上表提供了2014至2023年中国每百户居民主要耐用消费品平均拥有量信息。"]]}]}, {"name": "首段 · 第2句 细节描述", "tip": "描述之前用 To be specific / Specifically 过渡。具体到数据变化或占比。动态图3个公式、静态图2个公式。爸爸强调：三个数据用三种动词和副词（decreased remarkably / climbed significantly / rose slightly）避免句式单调。", "groups": [{"name": "动态图公式", "items": [["c2a1", "公式1 变化+对比", "To be specific, ____ decreased/increased remarkably from ____ to ____. However/Meanwhile, ____ climbed significantly from ____ to ____ during the same period.", "具体而言，____从____显著下降/上升到____。然而/与此同时，____从____显著攀升到____。", "Sth1和Sth2是图例；during the same period 视篇幅可省。", "To be specific, the percentage of graduates who choose to enter the workforce decreased remarkably from 68.1% to 60.7%. However, the percentage of graduates who pursue further study climbed significantly from 26.3% to 34.0%.", "具体而言，选择工作的毕业生比例从68.1%显著下降到60.7%。然而，选择继续深造的毕业生比例从26.3%显著攀升至34.0%。"], ["c2a2", "公式2 增量", "The number/proportion of ____ was ____ in ____, compared with ____ in ____, showing an increase of ____（带单位）.", "____在____年为____，而在____年为____，增长了____。", "增量记得带单位（percentage points / units）。", "The percentage of graduates who pursued further study was 34.0% in 2018, compared with 26.3% in 2013, showing an increase of 7.7 percentage points.", "2018年选择继续深造的毕业生比例为34.0%，2013年为26.3%，增长了7.7个百分点。"], ["c2a3", "公式3 倍数", "The number/proportion of ____ in ____ was X times that in ____.", "____在____年的数量是____年的X倍。", "2倍 twice，3倍 triple，以上用 four times；倍数三选一：twice that in / twice as high as that in / twice the figure。", "The percentage of graduates who start a business in 2018 was twice that in 2013.", "2018年毕业生创业比例是2013年的2倍。"]]}, {"name": "静态图公式", "items": [["c2b1", "公式1 占比+排名", "The percentages/proportions of ____, ____, ____ and ____ account for __%, __%, __% and __% respectively. Notably, ____ tops the list, at __%, followed by ____ at __%.", "____、____、____和____的比例分别为__%、__%、__%和__%。值得注意的是，____居首位，占__%；其次是____，占__%。", "主语是百分比复数，谓语用 account；排名写两项即可，否则头重脚轻。", "The percentages of students who acquired relevant knowledge, improved practical skills, felt comfortable and enhanced cooperation capacity account for 91.3%, 84.8%, 54.4% and 32.6% respectively. Notably, acquiring relevant knowledge tops the list, at 91.3%, followed by improving practical skills at 84.8%.", "获得相关知识、提高动手能力、感觉心情舒畅和增强合作能力的学生比例分别为91.3%、84.8%、54.4%和32.6%。值得注意的是，获得相关知识居首位，其次是提高动手能力。"], ["c2b2", "公式2 静态倍数", "The percentage of ____ was about X times that of ____ in ____.", "____年的____比例约为____的X倍。", "静态图倍数=同一年份不同变量的对比。", "The percentage of graduates who choose to work was about 1.8 times that of graduates who pursue further study in 2018.", "2018年选择工作的毕业生比例约为选择继续深造毕业生比例的1.8倍。"]]}]}, {"name": "首段 · 第3句 社会现象", "tip": "图表作文通过数据看现象，汉语五个字概括：发生某现象（某事变化 / 某事占比 / 某事获认同关注）。先选过渡句，再接社会现象方案。爸爸说：这是各种作文书都不告诉你的关键——that 和冒号后边怎么写。", "groups": [{"name": "引出社会现象（过渡句）", "items": [["c3a1", "升级前/原型", "The purpose of the chart is to remind us that ____.", "图表的目的是提醒我们____。", "替换词：purpose→message/primary intention；remind→convince/highlight the fact；us→the public/the whole society/undergraduates 等。替换后注意删除重复词。", "The primary intention of the chart is to remind the whole society that ____.", "图表的首要意图是提醒整个社会____。"], ["c3a2", "待选1", "These data lead us to the conclusion that ____", "这些数据使我们得出这样的结论：____", "", "", "\"\""], ["c3a3", "待选2", "It is apparent from the statistics that ____", "从统计数据可以明显看出____", "", "", "\"\""], ["c3a4", "待选3", "Despite its apparent simplicity, the chart highlights the core information that ____", "尽管它看似简单，这幅图却突出了核心信息：____", "", "", "\"\""], ["c3a5", "待选4", "The chart clearly communicates its intended meaning: ____", "这幅图清楚地传达了它的意图：____", "", "", "\"\""], ["c3a6", "待选5", "The chart appears to convey a message to the younger generation, reminding them that ____", "这幅图似乎向年轻一代传达了一条信息，提醒他们____", "", "", "\"\""]]}, {"name": "社会现象（方案）", "items": [["c3b1", "方案1 快速发展", "____ has been developing rapidly in recent years. / Recent years have witnessed the rapid development of ____.", "____近年来发展迅速。", "实体主题词（industry/economy）搭配 develop；抽象主题词（level/rate/number）搭配 improve/rise/climb。", "It is apparent from the statistics that the health literacy level has been improving rapidly in recent years.", "从统计数据可明显看出，居民健康素养水平近年来迅速提高。"], ["c3b2", "方案2 越来越多人", "the majority of people would choose to do ____ when they... / an increasing number of people tend to do ____ when they...", "大多数人在……时会选择做____ / 越来越多的人在……时倾向于做____", "people 可换为具体对象：residents/undergraduates/consumers、institutions、enterprises、brands、countries。", "These data lead us to the conclusion that an increasing number of people tend to choose a healthy lifestyle when they are able.", "这些数据使我们得出结论：越来越多的人在有条件时倾向于选择健康的生活方式。"], ["c3b3", "方案3 变得普遍", "____ is becoming common / popular / prevalent among people nowadays.", "如今____在人们中正变得普遍/流行。", "", "It is apparent from the statistics that pursuing further education is becoming common among undergraduates.", "从统计数据可以明显看出，如今大学生选择升学正变得常见。"], ["c3b4", "方案4 受到关注", "____ has drawn growing attention from the public. / People attach importance to ____.", "____日益受到公众关注 / 人们重视____。", "适用于态度型图表（对新技术、新观念、新生活方式的态度）。26考研英一养老机器人、英二户外活动均考查态度。", "It is apparent from the statistics that elderly-care robots have drawn growing attention from the public, with safety as their top concern.", "从统计数据可以明显看出，养老机器人日益受到公众关注，安全是他们的首要关切。"], ["c3b5", "方案5 万能", "This is a common scene/phenomenon/situation in modern society. / This phenomenon reflects a broader social trend.", "在当今社会，这是一个常见的场景/现象/情况 / 这一现象反映了更广泛的社会趋势。", "不需要补充任何成分的万能方案。", "", "\"\""]]}]}, {"name": "第二段 · 第4句 过渡句（引出原因分析）", "tip": "图画、图表、文字本质都是议论文，第二段围绕「某事为什么重要 / 某现象为什么发生」写原因分析。爸爸说：任选2句背下即可。", "groups": [{"name": "过渡句待选", "items": [["c4a1", "待选1", "Three key reasons, from my perspective, account for this phenomenon.", "在我看来，三个关键原因可以解释这一现象。", "many→innumerable/countless/abundant；reason→factor/cause；explain→contribute/account for；idea→standpoint/viewpoint。", "", "\"\""], ["c4a2", "待选2", "From my perspective, the causes of ____ can be summarized as three main aspects.", "在我看来，____的成因可以归结为三个主要方面。", "", "", "\"\""], ["c4a3", "待选3", "Several factors contribute to this phenomenon.", "几个因素促成了这一现象。", "", "", "\"\""], ["c4a4", "待选4", "A variety of reasons can be cited to account for this phenomenon.", "有很多原因可以用来解释这一现象。", "", "", "\"\""], ["c4a5", "待选5", "A combination of factors has contributed to the tendency reflected in this chart.", "多种因素共同促成了这张图表所反映的趋势。", "", "", "\"\""]]}, {"name": "连接词（三组原因的衔接）", "items": [["c4b1", "连接词组1", "Firstly, ... Secondly, ... Thirdly, ...", "首先……其次……第三……", "", "", "\"\""], ["c4b2", "连接词组2", "To begin with, ... What's more, ... Last but not least, ...", "首先……此外……最后但同样重要的是……", "", "", "\"\""], ["c4b3", "连接词组3", "To begin with, ... More importantly, ... Most importantly, ...", "首先……更重要的是……最重要的是……", "", "", "\"\""], ["c4b4", "连接词组4", "For one thing, ... For another, ...", "一方面……另一方面……", "", "", "\"\""], ["c4b5", "连接词组5", "First and foremost, ... Furthermore, ... Last but not least, ...", "首先……此外……最后但同样重要的是……", "", "", "\"\""]]}]}, {"name": "第二段 · 第5-7句 原因分析（三方案）", "tip": "爸爸说：不要死记名人事例，专注准备2-3个来自生活、经历、社会的例子。三个方案任选、可排序，形成三点原因，这样每位同学都独一无二。", "groups": [{"name": "方案一 举例论证（个人路线）·四步组装", "items": [["c5a1", "第1步 引出例子", "For instance / For example, ... / This point can be confirmed by the example of my roommate, / To give a common example,", "例如……/ 这一点可以通过我室友的例子证实 / 举一个常见的例子", "放弃背马云、奥巴马等名人事例，专注于身边例子。", "", "\"\""], ["c5a2", "第2步 简单句描述现状", "My ____, a ____, places a high priority on ____.", "我的____，一个____，高度重视____。", "常见短语：兴趣热爱类 be interested in / be passionate about / be enthusiastic about / be addicted to；高度重视类 place a high priority on / attach importance to / value highly；致力投入类 be committed to / dedicate oneself to；负面倦怠类 be tired of / be indifferent to。", "My hometown, a livable city, places a high priority on infrastructure construction.", "我的家乡，一个宜居的城市，高度重视基础设施建设。"], ["c5a3", "第3步 which非限定定语从句表结果", "..., which enables ____ to ____.", "……，这使____能够____。", "enable 可换：provides residents with convenient public services / ensures the safety and well-being of the elderly / helps the elderly maintain independence。好处参考方案三六大方面。", "For instance, my hometown, a livable city, places a high priority on infrastructure construction, which enables residents to relax and unwind at nearby parks.", "例如，我的家乡是一座宜居城市，高度重视基础设施建设，居民可以在附近的公园放松身心。"], ["c5a4", "第4步 换角度收尾", "During this period, ____ has improved. / Consequently, ____.", "在此期间，____有所提高 / 因此，____。", "During this period 可替换为 Consequently / As a result / Gradually。", "During this period, citizen satisfaction has improved.", "在此期间，市民满意度有所提高。"]]}, {"name": "方案二 宾语从句+定语从句（群众路线）", "items": [["c5b1", "方案二 公式", "The majority of people believe that ____ will provide them with a broader platform to ____, which may put them in a beneficial position in the future.", "大多数人认为____将给他们提供一个更广阔的平台去____，这可能让他们在未来处于有利位置。", "believe→maintain/hold the view/are convinced；provide a broader platform→present a unique chance/create more opportunities；which may put them...→which is likely to secure a competitive edge。好处参考六大方面。", "The majority of individuals maintain that team spirit will provide them with a broader platform to develop themselves, which may put them in a beneficial position in the future.", "大多数人认为团队合作精神会给他们提供一个用于发展自己的更宽广的平台，这让他们未来处于有利位置。"]]}, {"name": "方案三 主语/宾语/同位语从句 + 六大方面", "items": [["c5c1", "主语从句", "It is widely believed that ____. / It is generally agreed that ____. / It is well known that ____.", "人们普遍相信____ / 人们普遍认同____ / 众所周知____", "作用只是拉长句子，任选三个待选句记住。重点在省略号后善用短语。", "", "\"\""], ["c5c2", "宾语从句", "There is no doubt that ____. / An increasing number of people are beginning to realize that ____. / We cannot ignore the fact that ____.", "毫无疑问____ / 越来越多的人开始意识到____ / 我们不能忽视____的事实", "", "", "\"\""], ["c5c3", "同位语从句", "Definitely no one can deny the fact that ____. / There is a growing recognition that ____. / We are faced with the undeniable fact that ____.", "当然没有人能否认____的事实 / 人们越来越认识到____ / 我们面临着不可否认的事实____", "", "", "\"\""], ["c5c4", "常用短语·起关键作用", "____ play a crucial/vital/pivotal role in ____. / ____ is the cornerstone of ____. / ____ act as a catalyst for ____.", "____在____中起关键作用 / ____是____的基石 / ____是____的催化剂", "", "Definitely no one can deny the fact that the popularity of the Internet plays a crucial role in effective communication and information collection.", "没有人能否认：互联网的流行在有效交流和信息获取中起着至关重要的作用。"], ["c5c5", "常用短语·积极/消极", "____ contribute significantly to ____. / ____ may undermine ____. / ____ pose a tremendous threat to ____. / ____ is a double-edged sword for ____.", "____极大促进____ / ____可能损害____ / ____对____构成巨大威胁 / ____对____是把双刃剑", "", "", "\"\""]]}]}, {"name": "第三段 · 第8句 总结全文", "tip": "总结全文即重申中心思想，第三句中的方案也可使用。句子开头需加 All in all / To sum up / In general / Generally speaking / On the whole。", "groups": [{"name": "方案一 从句", "items": [["c8a1", "公式1 得出结论", "All in all, it is not difficult to draw the conclusion that enough attention must be paid to ____ by ourselves and our community.", "总之，不难得出结论：我们个人和社区必须对____给予足够重视。", "根据情况变换时态。", "It is not difficult to draw the conclusion that enough attention must be paid to the practical courses by ourselves and our universities.", "不难得出结论，我们个人和大学都必须对实践课程给予足够的重视。"], ["c8a2", "公式2 牢记重要", "We should bear in mind that ____ is of great importance to ____.", "我们应牢记____对____很重要。", "参考六大方面，主要从个人、行业、社会角度。特别适用于意志品质类作文。", "We should bear in mind that the spirit of perseverance is of great importance to both our daily lives and studies.", "我们应牢记坚持的精神对我们的生活和学习很重要。"], ["c8a3", "公式3 不是选择是必需", "The discussion leads us to the realization that ____ is not an option, but a necessity.", "讨论使我们认识到，____不是一种选择，而是一种必要。", "", "The discussion leads us to the realization that cultural inheritance is not an option, but a necessity.", "讨论使我们认识到，文化传承不是一种选择，而是一种必要。"], ["c8a4", "公式4 不可否认的事实", "We are faced with the undeniable fact that ____ has become an integral part of our lives.", "我们面临不可否认的事实：____已成为我们生活中不可或缺的一部分。", "另一版本：increasingly accessible to the general public。", "We are faced with the undeniable fact that the Internet has become an integral part of our lives.", "我们面临一个不可否认的事实：互联网已经成为我们生活中不可或缺的一部分。"]]}, {"name": "方案二 否定词组倒装", "items": [["c8b1", "倒装公式", "By no means / On no account / Under no circumstances / Never should we ____.", "我们决不能____。", "结构：否定词+助动词+主谓宾。搭配：give up our efforts to / underestimate the profound impact of / cease our pursuit of / doubt the importance of。", "By no means should we give up our efforts to protect the environment.", "我们决不能放弃在保护环境上的努力。"]]}, {"name": "方案三 万能应急（不针对题目）", "items": [["c8c1", "待选1", "It is evident that the trend/distribution reflected in the chart deserves our careful consideration.", "很明显，图表反映的趋势/分布值得我们认真考虑。", "万能且无需修改任何内容，应急使用。", "", "\"\""], ["c8c2", "待选2", "There is no denying that further attention must be paid to the scene/phenomenon/situation/tendency mentioned above.", "不可否认，对上述场景/现象/情况/趋势必须给予进一步关注。", "", "", "\"\""], ["c8c3", "待选3", "Given the above analysis, it is not difficult to understand why this phenomenon has aroused widespread concern.", "鉴于以上分析，不难理解为什么这一现象引起了广泛关注。", "", "", "\"\""]]}]}, {"name": "第三段 · 第9-10句 具体措施", "tip": "爸爸说：五个角度任选三个掌握，肯定命中两个。政府作为 / 公民意识 / 个人行为 / 媒体呼吁 / 家庭教育。", "groups": [{"name": "方案一 一句一个角度（两句并列）", "items": [["c9a1", "政府作为", "It is imperative for the authorities to make strict laws / formulate policies / allocate more funds / launch public initiatives to ____.", "当局必须制定严格的法律/制定政策/拨付更多资金/发起公共倡议来____。", "", "It is imperative for the authorities to make strict laws to protect the environment.", "当局必须制定严格的法律来保护环境。"], ["c9a2", "公民意识", "We should also raise ____ awareness among children and adults. / It is high time that we raised public consciousness of ____.", "我们还应该增强孩子和大人的____意识 / 是时候增强公众____意识了。", "", "We should also raise environmental awareness among children and adults.", "我们还应该增强孩子和大人的环境保护意识。"], ["c9a3", "个人行为", "We should spare no pains to ____ and make the \"global village\" better.", "我们应该不遗余力地____，让\"地球村\"变得更好。", "We should 可替换为 It is our duty to / We are obliged to；spare no pains to 可替换为 make concerted efforts to / take concrete steps to。", "We should spare no pains to protect the environment and make the \"global village\" better.", "我们应该不遗余力地保护环境，让\"地球村\"变得更好。"], ["c9a4", "媒体呼吁", "New media platforms, ranging from short video apps to social media, should appeal to users to ____.", "新媒体平台，从短视频应用到社交媒体，应该呼吁用户____。", "", "New media platforms, ranging from short video apps to social media, should appeal to users to adopt a sustainable lifestyle.", "新媒体平台，从短视频应用到社交媒体，应该呼吁用户采取可持续的生活方式。"], ["c9a5", "家庭教育", "Parents and teachers should set a good example for children in ____ through their own behavior.", "家长和老师应当通过自身为孩子在____方面树立好榜样。", "", "Parents and teachers should set a good example for children in resource conservation through their own behavior.", "家长老师应通过自身行为为孩子树立节约资源的榜样。"], ["c9a6", "并列示范", "For one thing, it is imperative for the authorities to ____. For another, ____ ought to spare no pains to ____.", "一方面，当局必须____。另一方面，____应该不遗余力地____。", "", "For one thing, it is imperative for the authorities to formulate strict regulations to ensure the safety of elderly-care robots. For another, enterprises ought to spare no pains to improve product quality.", "一方面，当局必须制定严格法规确保养老机器人安全。另一方面，企业应不遗余力提高产品质量。"]]}, {"name": "方案二 老子说的才是对的（对比出独到见解）", "items": [["c9b1", "待选1", "When it comes to concrete solutions, some people hold that A must take responsibility for B. In fact, it is C that plays a crucial role in D.", "谈到具体解决方案，一些人认为A必须承担B的责任。事实上，C在D中起关键作用。", "A=他人认为的实施方（the government department concerned）；B=主题词；C=你认为的实施方（cultivating citizens' consciousness）；D=主题词但别和B完全一样。", "When it comes to concrete solutions, some people hold that the government department concerned must take responsibility for the protection of the environment. In fact, it is cultivating citizens' consciousness that plays a crucial role in protecting the environment.", "谈到解决方案，一些人认为有关部门必须承担环保责任。事实上，培养公民意识在环保中起关键作用。"], ["c9b2", "待选2", "On the surface, A seems to be a sound solution, but on careful consideration, we find that B is a more reasonable and effective approach.", "表面上，A似乎是个合理的解决方案，但仔细考虑后，我们发现B是更合理有效的方法。", "适用于主题词、实施方、解决措施较短的题目。", "On the surface, setting rules based on scenic location seems to be a sound solution, but on careful consideration, we find that raising public awareness is a more reasonable and effective approach.", "表面上，根据景区位置制定规则似乎合理，但仔细考虑后，增强公众意识才是更合理有效的方法。"]]}]}, {"name": "第三段 · 第11句 畅想未来", "tip": "均为万能句，任选2句背住。待选1和2需小改以适配题目；待选3和4不需要改但是套话，用于时间紧张和字数不够时。", "groups": [{"name": "畅想未来待选", "items": [["c11a1", "待选1", "If these proposed measures are implemented, a harmonious balance between ____ and ____ will be within our reach.", "如果这些措施得以实施，____与____之间的和谐平衡触手可及。", "A、B根据主题词来定。", "If these proposed measures are implemented, a harmonious balance between children's physical exercise and intellectual development will be within our reach.", "如果这些措施得以实施，儿童体育锻炼与智力发展之间的和谐平衡触手可及。"], ["c11a2", "待选2", "Only through the joint efforts of all people can we effectively solve the problem / have a better life / advance social progress.", "只有通过所有人的共同努力，我们才能有效解决问题/拥有更好的生活/推动社会进步。", "需小改适配题目。", "Only through the joint efforts of the government, enterprises and the public can we effectively promote the healthy development of elderly-care robots.", "只有通过政府、企业和公众的共同努力，我们才能有效促进养老机器人的健康发展。"], ["c11a3", "待选3", "In this way, hopefully, we may embrace a brighter and more promising future.", "这样我们才有希望拥抱一个更光明、更有希望的未来。", "万能套话，无需修改。", "", "\"\""], ["c11a4", "待选4", "There is no better time than now for us to take collective and decisive action to address this pressing issue.", "现在是我们采取集体和果断行动解决这一紧迫问题的最佳时机。", "万能套话，无需修改。", "", "\"\""]]}]}]}, "big:cartoon": {"name": "大作文 · 图画(漫画)作文模板", "tip": "图画作文透过图画看寓意。第一段=图画描述(分类拆分组合法)+主题阐述(某事很重要)；第二三段与图表/文字作文通用（切换上方“图表作文”可见第二段原因、第三段措施，本页已把通用段一并列出，可跨页勾选拼接）。", "parts": [{"name": "首段 · 第1-2句 图画描述（引入+拆分组合）", "tip": "统一方法：分类、拆分、组合法。一幅图非对话型公式：环境+基本动作(do)+主体，主要动作(doing)，with 细节。基本动作：stand/sit/lie/run/stay；主要动作：listen/talk/read/write/wear/stare/think。", "groups": [{"name": "引入图画描述（过渡句）", "items": [["p1a0", "升级后", "As is symbolically depicted in the cartoon above, ____.", "如上漫画象征性地描绘了____。", "shown→illustrated/depicted/portrayed/conveyed/described/presented/indicated/reflected；可加副词 vividly/symbolically/subtly/clearly；picture→drawing/painting/photograph/cartoon。", "As is symbolically depicted in the picture above, on the playground runs a young man, rushing to the finishing line, with a sweet smile on his face.", "如图象征性描绘，操场上一个年轻人跑向终点线，脸上带着甜蜜的微笑。"], ["p1a1", "待选1", "The cartoon above presents us with a thought-provoking scene: ____", "上面的漫画向我们呈现了一个发人深省的场景：____", "", "", "\"\""], ["p1a2", "待选2", "Portrayed distinctively in the drawing above is a common scene: ____", "画中清晰地描绘出一个常见的场景：____", "", "", "\"\""], ["p1a3", "待选3", "What is clearly conveyed in the picture is that ____", "图片明确传达出的是____", "", "", "\"\""], ["p1a4", "待选4", "Depicted in the picture above is a scene that strikes us as both familiar and thought-provoking: ____", "图中描绘的是一个既熟悉又发人深省的场景：____", "", "", "\"\""]]}, {"name": "图画描述公式（非对话型·一幅图）", "items": [["p1b1", "组合公式", "As is symbolically depicted in the picture above, ____ (环境) + 基本动作(do) + 主体, 主要动作(doing), with 细节.", "如上图所示，____（环境）+基本动作+主体，主要动作，with细节。", "环境：若清晰写具体，否则用 in front of us / in the middle of the picture。细节：with a sweet smile on his face / with determination in his eyes / with curiosity in his eyes / with tears in her eyes 等。", "As is symbolically depicted in the picture above, in front of us stays an oil lamp, lovely as well as cute, lighting up the darkness, with a sweet smile on its face.", "如图所示，在我们面前有一盏小油灯，可爱又迷人，照亮黑暗，脸上带着微笑。"], ["p1b2", "升级 as well as", "____, 形容词1 as well as 形容词2, 主要动作(doing), with 细节.", "____，又…又…，主要动作，with细节。", "正面：lovely as well as cute / graceful as well as elegant / confident as well as optimistic；负面：cruel as well as vicious / negative as well as passive / terrible as well as horrible。", "As is symbolically depicted in the picture above, on the playground runs a young man, active as well as vigorous, rushing to the finishing line, with a sweet smile on his face.", "如图所示，操场上一个年轻人，活跃又有精力，冲向终点线，脸上带着微笑。"]]}, {"name": "两幅图 / 一图一表", "items": [["p1c1", "两幅图", "As is depicted in the two pictures above, ____. Similarly/While/Meanwhile/Moreover, ____.", "如上两图所示，____。相似/对比/同时/递进，____。", "两幅图记得用复数；相似用 Similarly/Likewise，对比用 While/Whereas，同时用 Meanwhile/At the same time，递进用 Moreover/Furthermore。", "", "\"\""], ["p1c2", "一图一表", "As is vividly depicted in the cartoon and clearly shown in the chart above, ____, and ____.", "如漫画生动描绘且图表清晰展示，____，且____。", "一图一表=图画描述+图表总体描述的简单叠加。", "The cartoon above depicts ____, while the chart below illustrates ____.", "上面的漫画描绘了____，而下面的图表展示了____。"]]}]}, {"name": "首段 · 第3句 主题阐述（某事很重要）", "tip": "图画作文透过图画看寓意，中心思想五个字：某事很重要。先选过渡句，再接中心思想方案。爸爸说：过渡句谁都会，关键是省略号后边怎么写——这就是考场无法套用的原因。", "groups": [{"name": "引出主题阐述（过渡句）", "items": [["p3a0", "升级后", "The primary intention of the drawing is to remind the whole society that ____.", "这幅图的首要意图是提醒整个社会____。", "purpose→message/implication/primary intention/symbolic meaning；us→the public/the whole society/urban residents/undergraduates/teenagers 等；remind→convince/highlight the fact。", "", "\"\""], ["p3a1", "待选1", "Simple as the drawing is, it conveys a truth that ____", "图画虽然简单但蕴含真理：____", "", "Simple as the drawing is, it conveys a truth that the utmost importance ought to be attached to environmental protection by our government and the public.", "图画虽简单但蕴含真理：政府和公众应当高度重视环境保护。"], ["p3a2", "待选2", "The drawing, undoubtedly, emphasizes the core idea that ____", "这幅图毫无疑问突出了核心观点：____", "", "", "\"\""], ["p3a3", "待选3", "What the cartoon above mirrors is a thought-provoking phenomenon that ____", "上图反映的是一个发人深省的现象：____", "", "", "\"\""]]}, {"name": "中心思想方案", "items": [["p3b1", "方案1 如此重要", "____ is so indispensable that the subject deserves the highest level of attention and consideration.", "____如此不可或缺，以至于这一主题值得最高程度的关注和考虑。", "important→vital/critical/indispensable/significant/irreplaceable；problem→phenomenon/subject/situation/issue/scene。主题词要具体到事。", "The purpose of the drawing is to remind teenagers and youngsters that traditional culture is so indispensable that the subject deserves the highest level of attention and consideration.", "这幅图旨在提醒年轻人传统文化不可或缺，值得最高关注和考虑。"], ["p3b2", "方案2 高度重视", "The utmost importance ought to be attached to ____ by ____. / ____ should give the highest priority to ____.", "____应当受到____的高度重视 / ____应把____放在首位。", "某人一般指政府、机构、个人、民众。", "Simple as the drawing is, it conveys a truth that our government and citizens should give the highest priority to environmental protection.", "图画虽简单但蕴含真理：政府和公民应把环保放在首位。"], ["p3b3", "方案3 重大成就", "Great accomplishments/achievements have been made in ____ by ____.", "____在____方面取得了巨大成就。", "", "Without a doubt, the drawing and the chart emphasize the truth that great accomplishments have been made in the construction of public facilities by the government.", "毫无疑问，图和表强调：政府在公共设施建设方面取得巨大成就。"], ["p3b4", "方案4 双重否定", "At no time should we underestimate the significance of ____. / The importance of ____ cannot be overstated.", "我们任何时候都不应低估____的重要性 / ____的重要性再怎么强调也不为过。", "", "The drawing conveys a clear message: at no time should the public underestimate the significance of filial piety.", "这幅图传达明确信息：公众任何时候都不应低估孝顺的重要性。"], ["p3b5", "方案5 强调句型", "It is ____ that deserves greater attention. / It is ____ that must be our top priority.", "正是____值得更多关注 / 正是____必须是我们的首要任务。", "", "The drawing, undoubtedly, highlights the core idea that it is innovation that deserves greater attention.", "图画毫无疑问强调：创新值得高度重视。"]]}]}, {"name": "通用第二段（与图表共用）· 过渡+原因123", "tip": "图画、图表、文字第二三段完全相同。此处列出核心组件，可与本页首段一起勾选拼接。更完整的方案讲解见“图表作文”页。", "groups": [{"name": "第二段过渡句", "items": [["p4a1", "待选1", "Three key reasons, from my perspective, account for this phenomenon.", "在我看来，三个关键原因可以解释这一现象。", "", "", "\"\""], ["p4a2", "待选3", "Several factors contribute to this phenomenon.", "几个因素促成了这一现象。", "", "", "\"\""], ["p4a3", "待选4", "A variety of reasons can be cited to account for this phenomenon.", "有很多原因可以解释这一现象。", "", "", "\"\""]]}, {"name": "原因句（三大方案精华）", "items": [["p5a1", "方案一 举例", "For instance, my roommate, Kevin, was addicted to the Internet, which made him fail the final exam. During that period, he regretted everything he had done.", "例如，我的室友凯文沉溺于互联网，导致期末考试不及格。那段时间他后悔所做的一切。", "个人路线四步组装：引出例子+简单句+which定语从句表结果+换角度收尾。", "", "\"\""], ["p5a2", "方案二 群众路线", "The majority of individuals maintain that team spirit will provide them with a broader platform to develop themselves, which may put them in a beneficial position in the future.", "大多数人认为团队精神会提供发展自己的更宽广平台，让他们未来处于有利位置。", "宾语从句+定语从句。", "", "\"\""], ["p5a3", "方案三 从句+短语", "Definitely no one can deny the fact that ____ plays a crucial role in ____.", "当然没有人能否认____在____中起关键作用。", "主语/宾语/同位语从句拉长句子，后接六大方面短语。", "Definitely no one can deny the fact that outdoor activities play a crucial role in children's physical and mental development.", "没有人能否认：户外活动对儿童身心发展起关键作用。"]]}]}, {"name": "通用第三段（与图表共用）· 总结+措施+未来", "tip": "图画、图表、文字第三段完全相同。更完整组件见“图表作文”页。", "groups": [{"name": "第三段核心句", "items": [["p8a1", "总结全文", "We should bear in mind that ____ is of great importance to ____.", "我们应牢记____对____很重要。", "特别适用于意志品质类作文。", "We should bear in mind that the spirit of perseverance is of great importance to both our daily lives and studies.", "我们应牢记坚持精神对生活和学习很重要。"], ["p9a1", "具体措施", "For one thing, it is imperative for the authorities to ____. For another, new media platforms should appeal to people to ____.", "一方面当局必须____。另一方面新媒体平台应呼吁人们____。", "五角度：政府/公民/个人/媒体/家庭，任选三个。", "", "\"\""], ["p11a1", "畅想未来", "In this way, hopefully, we may embrace a brighter and more promising future.", "这样我们才有希望拥抱更光明、更有希望的未来。", "万能套话。", "", "\"\""]]}]}]}, "big:text": {"name": "大作文 · 文字作文模板", "tip": "文字作文进入大纲后还未考过，只能看大纲样题。要求两点：表明态度 + 论证观点。第一段=文字改写+表明态度；第二段原因分析；第三段总结+措施+未来（与图画图表相同）。爸爸说：本质都是议论文，只是第一段不同。", "parts": [{"name": "首段 · 第1句 文字改写", "tip": "改写思路：同义词/词组替换、主动变被动、高度概括、变换修饰语位置。首选改写；不会改写时用“引出主题+改写观点”。", "groups": [{"name": "引出主题（不会改写时用）", "items": [["t1a1", "待选1", "It cannot be denied that ____ plays a key role in people's work and life.", "不可否认的是，____在人们工作和生活中扮演重要角色。", "", "It cannot be denied that integrity and benevolence play a key role in people's work and life.", "不可否认，诚信和仁慈在人们工作和生活中起关键作用。"], ["t1a2", "待选2", "It is widely accepted that ____, a strong and positive life attitude, is the key element for individuals to achieve success.", "人们普遍认为____这种坚强积极的生活态度是个人成功的关键。", "", "", "\"\""], ["t1a3", "待选3", "Nowadays, it is well-known that the problem/phenomenon of ____ has caused wide concern.", "如今众所周知____的问题/现象已引起广泛关注。", "", "", "\"\""], ["t1a4", "待选4", "With the rapid advancement of society and technology, ____ has become a common phenomenon/problem in our daily lives.", "随着社会和科技进步，____已成为日常生活中的普遍现象/问题。", "", "With the rapid advancement of society and technology, network addiction among children has become a common phenomenon in our daily lives.", "随着科技进步，儿童网络成瘾已成为日常生活中的普遍现象。"], ["t1a5", "待选5", "Currently, whether to ____ or ____ has become a hot topic among people, especially among the young, and heated discussions are on the way.", "目前，是____还是____已成为人们热门话题，尤其在年轻人中，激烈讨论即将展开。", "", "", "\"\""]]}, {"name": "改写观点（必须表明作者观点）", "items": [["t1b1", "待选1", "The author believes that + 文字中作者的观点", "作者认为……", "题干中要求“说明自己是否或在多大程度上同意作者观点”，所以必须表明作者的观点。", "The author believes that we are perceived as less biased and willing to tell the truth when we show uncertainty in a transparent way.", "作者认为，当我们以透明方式表达不确定性时，会被认为偏见更少、更愿说实话。"], ["t1b2", "待选2", "Therefore, the author holds that + 作者的观点", "因此作者认为……", "", "", "\"\""], ["t1b3", "待选3", "According to the author, + 作者的观点", "根据作者的观点……", "", "", "\"\""], ["t1b4", "待选4", "In the opinion of the author, + 作者的观点", "在作者看来……", "", "", "\"\""]]}]}, {"name": "首段 · 第2句 表明态度", "tip": "牢固树立：这句话虽然短，但必须有，因为题干有明确要求。", "groups": [{"name": "三种态度", "items": [["t2a1", "强烈同意", "I fully agree with the author's viewpoint.", "我完全同意作者的观点。", "", "", "\"\""], ["t2a2", "强烈反对", "I strongly disagree with the author's opinion.", "我强烈反对作者的观点。", "", "", "\"\""], ["t2a3", "部分同意", "I share the author's view to a large extent, but I also believe that ____.", "我在很大程度上同意作者观点，但我也认为____。", "", "", "\"\""]]}]}, {"name": "通用第二、三段（与图表/图画相同）", "tip": "文字作文与图画图表作文只是第一段不同，二三段完全相同。", "groups": [{"name": "第二段 原因", "items": [["t4a1", "过渡句", "Several factors contribute to this phenomenon.", "几个因素促成了这一现象。", "", "", "\"\""], ["t5a1", "原因·从句+短语", "Definitely no one can deny the fact that ____ plays a crucial role in ____.", "当然没有人能否认____在____中起关键作用。", "", "", "\"\""], ["t5a2", "原因·举例", "For instance, my roommate is passionate about reading, which brings him exceptional writing skills.", "例如，我的室友热爱读书，这给他带来非凡的写作技巧。", "", "", "\"\""]]}, {"name": "第三段 总结+措施+未来", "items": [["t8a1", "总结", "We should bear in mind that ____ is of great importance to our daily lives.", "我们应牢记____对日常生活很重要。", "", "", "\"\""], ["t9a1", "措施", "For one thing, it is imperative for the authorities to ____. For another, we should spare no pains to ____.", "一方面当局必须____。另一方面我们应不遗余力地____。", "", "", "\"\""], ["t11a1", "未来", "In this way, hopefully, we may embrace a brighter and more promising future.", "这样我们才有希望拥抱更光明、更有希望的未来。", "", "", "\"\""]]}]}]}, "small:letter": {"name": "小作文 · 书信模板", "tip": "爸爸说：书信只分2类——被动写信（回复信）和主动写信（公务信函）。二者仅在称呼和第一段是否自我介绍上有区别。核心是第二段：弱化信件类型区分，强化功能表达。全文默写约8句。落款一般 Yours sincerely, Li Ming。", "parts": [{"name": "称呼（按题干确定）", "tip": "情况1只知道姓：Dear Mr./Ms. Lee；情况2只知道名：Dear Paul/John；情况3只知道职位：Dear Manager/President/Editor/Professor；情况4啥也不知道：Dear Sir or Madam / Dear Friends。", "groups": [{"name": "常用称呼", "items": [["l0a1", "只知道姓", "Dear Mr. Lee / Dear Ms. Lee", "尊敬的李先生/女士", "", "", "\"\""], ["l0a2", "只知道名", "Dear Paul / Dear John", "亲爱的保罗/约翰", "", "", "\"\""], ["l0a3", "只知道职位", "Dear Manager / Dear President / Dear Editor / Dear Professor", "尊敬的经理/校长/编辑/教授", "", "", "\"\""], ["l0a4", "未知", "Dear Sir or Madam / Dear Friends", "尊敬的先生或女士/亲爱的朋友们", "", "", "\"\""]]}]}, {"name": "第一段 · 背景提要 + 来信意图", "tip": "被动写信（回复信）：第一句背景提要+第二句来信意图，无需自我介绍。公务信函：第一句自我介绍（不可省略）+第二句来信意图。", "groups": [{"name": "被动写信·第1句 背景提要", "items": [["l1a1", "积极的·感谢", "Thanks for your email. I'm so pleased/glad/excited to hear that ____.", "谢谢你的来信。很高兴得知____。", "对方来信是赞美/分享/询问时用。省略号内容摘抄或改编自题干。", "Thanks for your email. I am very glad to hear that you are interested in the innovative craft-making exhibition.", "谢谢你的来信。很高兴得知你对这场创新手工艺展感兴趣。"], ["l1a2", "积极的·分享", "Thank you for sharing ____ with me. I truly enjoyed it.", "感谢你与我分享____，我真的很喜欢。", "", "Thanks for sharing the video of your family's trip in China. I truly enjoyed it.", "感谢你分享家人在中国旅行的视频。我真的很喜欢。"], ["l1a3", "积极的·收信", "I was delighted to receive your email about ____.", "很高兴收到你关于____的来信。", "", "", "\"\""], ["l1a4", "消极的", "I'm sorry to hear that ____. / I must apologize for ____. / I understand your concern about ____.", "我很抱歉得知____ / 我必须为____道歉 / 我理解您对____的担忧。", "对方来信是投诉/坏消息/我的过错时用。", "", "\"\""], ["l1a5", "通用·表达心情", "I want to express my ____ through this letter regarding ____ that ____.", "我想通过这封信表达我对____的____。", "心情：disappointment 不满 / displeasure 不高兴 / apology 道歉 / regret 遗憾；主题词据题干定，如 a product / a tragedy / a misunderstanding。", "", "\"\""], ["l1a6", "通用寒暄", "I hope this letter/email finds you well and ____.", "展信佳（祝看到这封信的你一切安好）____。", "若本句无法根据题干改写，可省略或使用通用寒暄。", "I hope this email finds you well and it is difficult to decide between the two shows.", "展信佳，在这两个展览之间做选择很困难。"], ["l1a7", "通用寒暄", "It was a great pleasure to receive your email. / It gives me great pleasure to write to you. / Allow me to extend my warmest greetings to you.", "收到您的来信深感愉快 / 能给您写信倍感荣幸 / 请允许我致以最诚挚的问候。", "", "", "\"\""], ["l1a8", "拉长", "—it was really wonderful and made me happy. / —I couldn't help smiling while watching it.", "——它真的很棒让我开心 / ——看的时候我忍不住一直笑。", "可接在积极背景句后拉长字数。", "", "\"\""]]}, {"name": "公务信函·第1句 自我介绍（不可省略）", "items": [["l1b1", "单独成句", "I am a student from the department of Art at a university. / I am an undergraduate at a university, majoring in Art.", "我是某大学艺术系的学生 / 我是某大学艺术专业本科生。", "题干给出身份就照写，未给出默认自己是学生。", "", "\"\""], ["l1b2", "融入开头", "As a student in the Art Department, I am writing to ____.", "作为艺术系的一名学生，我写信是为了____。", "", "As a student in the Art Department, it is my honor to inform you that our university will be hosting the International Innovation Contest.", "作为艺术系学生，我很荣幸通知您我校将举办国际创新大赛。"]]}, {"name": "第2句 来信意图（通用）", "items": [["l1c1", "通用引入", "I am writing this letter in order to (I am writing to) + ____.", "我写信是为了____。", "省略号是具体事件，据题而定。正式开头可用 The purpose of this letter is to... / I am writing with the intention of...", "I am writing this letter in order to provide further details about the plan.", "我写这封信是为了提供有关该计划的进一步细节。"], ["l1c2", "感谢", "express my gratitude / appreciate your...", "表达我的感谢/感激您的……", "", "", "\"\""], ["l1c3", "道歉/祝贺/慰问", "clarify some misunderstandings / apologize for my... / congratulate you on... / express my sympathy / extend my condolences for...", "澄清误会 / 为……道歉 / 祝贺…… / 表达慰问……", "", "", "\"\""], ["l1c4", "建议/征求/投诉", "suggest some improvements / make several suggestions about... / seek your advice on... / complain about... / express my dissatisfaction with...", "建议改进 / 征求意见 / 投诉…… / 表达不满……", "", "", "\"\""], ["l1c5", "表扬/邀请/通知", "praise/commend your excellent customer service / invite you to participate in/attend... / inform you that... / notify you of the meeting.", "表扬优质服务 / 邀请参加 / 通知……", "", "", "\"\""], ["l1c6", "回复/告诉/分享", "thanks for/accept/decline your invitation / tell you more about... / share my thoughts/feelings about...", "感谢/接受/拒绝邀请 / 告诉更多 / 分享想法感受", "", "I am writing to tell you more about these precious letters.", "我写信是想跟你多讲讲这些珍贵的家书。"], ["l1c7", "介绍/推荐/自荐", "introduce ... to you / recommend ... to you / introduce myself.", "向你介绍…… / 推荐…… / 自我介绍", "", "", "\"\""], ["l1c8", "提醒/求助/帮助", "remind you that... / draw your attention to... / request your assistance. / offer my support.", "提醒你 / 引起注意 / 求助 / 提供帮助", "", "", "\"\""], ["l1c9", "申请/辞职", "apply for admission/a scholarship/a position / submit my resignation / formally resign from my present position.", "申请入学/奖学金/职位 / 递交辞呈 / 正式辞职", "", "", "\"\""], ["l1c10", "计划/安排/确认", "describe my recent plan / provide further details about the plan / specify the event arrangement / outline my daily schedule / confirm our appointment.", "描述近期计划 / 提供细节 / 说明活动安排 / 概述日程 / 确认约定", "", "", "\"\""], ["l1c11", "总结/强调/呼吁", "summarize the main points of the meeting / highlight the importance of this matter / call on everyone to... / appeal to the public to...", "总结会议要点 / 强调重要性 / 号召大家 / 呼吁公众", "", "", "\"\""], ["l1c12", "邀请信专用开头", "It is my honor to invite you to join in ____ / visit ____. It gives me immense pleasure to ____.", "我很荣幸邀请您参加____/参观____。", "It is my honor 可替换为 It gives me immense pleasure to。", "", "\"\""]]}]}, {"name": "第二段 · 具体内容或原因分析（核心）", "tip": "爸爸说：弱化建议信、投诉信、邀请信等区分，强化功能表达。这里给出使用率极高的50句，写作时挑选2-3句即可。第一段过渡句+分点阐述（二三句）。", "groups": [{"name": "第1句 过渡句", "items": [["l2a1", "待选1", "There are at least two/three factors accounting for my ____.", "至少有两/三个因素说明我的____。", "省略号为建议、投诉、邀请、感谢等名词形式：suggestion/advice、complaint、invitation、gratitude、apology、application、resignation、recommendation、request、inquiry 等。", "", "\"\""], ["l2a2", "待选2", "The primary reasons for my ____ are as follows.", "我____的主要原因如下。", "", "", "\"\""], ["l2a3", "待选3", "The reasons for my ____ are outlined below.", "我____的原因概述如下。", "", "", "\"\""], ["l2a4", "待选4", "The details can be listed as follows. / As for the questions you raised, here are my answers. / Let me answer your questions one by one.", "详情如下 / 关于你提出的问题，以下是我的答复 / 让我逐一回答你的问题。", "", "", "\"\""]]}, {"name": "第2-4句 分点阐述 · 活动的1基本信息", "items": [["l2b1", "句1", "The meeting will be held in ____ at 8:00 a.m. on Sunday, December 19th.", "会议将于12月19日周日上午8点在____举行。", "1~4句都是交代时间地点事件，选一句背住即可。活动：Activity/Competition/Exhibition/Performance/Conference/lecture 等；地点：university/library/conference center/gymnasium/playground 等。", "Firstly, the contest will be held on the playground in my university at 3:00 p.m. on Sunday, December 31st.", "首先，比赛将于12月31日周日下午3点在我校操场举行。"], ["l2b2", "句2", "Our university will host the ____ in ____ on Sunday, December 19th.", "我校将于12月19日星期日在____举办____。", "", "", "\"\""], ["l2b3", "句3", "The English corner is scheduled to take place in the library on Friday from 7:00 to 8:00 p.m.", "英语角定于星期五晚上7点到8点在图书馆举行。", "", "", "\"\""], ["l2b4", "句4", "On Sunday, December 19th, a departmental meeting will be held in the main hall, commencing at 8:00 a.m.", "12月19日周日，部门会议将在主会场举行，上午8点开始。", "", "", "\"\""]]}, {"name": "活动的2主题目的（5-8）", "items": [["l2c1", "句5", "The subject/theme of the conference is ____.", "会议的主题是____。", "5~8句选一句背住。升级版：Centered on the theme of ..., the event aims to do Sth.", "", "\"\""], ["l2c2", "句6", "The purpose of the conference is to discuss ____.", "会议的目的是讨论____。", "", "", "\"\""], ["l2c3", "句7", "This conference aims to facilitate an in-depth discussion on ____.", "本次会议旨在促进关于____的深入讨论。", "", "", "\"\""], ["l2c4", "句8", "This event is held under the theme of \"Innovation and Future\".", "本次活动在\"创新与未来\"主题下举行。", "", "", "\"\""]]}, {"name": "活动的3参与范围（9-12）", "items": [["l2d1", "句9", "The event is anticipated to attract wide participation from both students and faculty members.", "预计该活动将吸引学生和教职工的广泛参与。", "9~12句选二句背住。", "", "\"\""], ["l2d2", "句10", "Students of all grades are eligible to enter the competition, including both domestic and international students.", "所有年级学生都有资格参赛，包括国内和国际学生。", "", "", "\"\""], ["l2d3", "句11", "We have invited leading figures from various sectors, including eminent scholars, renowned entrepreneurs, and senior media representatives.", "我们邀请了各行业领军人物，包括杰出学者、知名企业家和资深媒体代表。", "", "", "\"\""], ["l2d4", "句12", "This event is expected to bring together a host of distinguished guests, including leading experts and scholars in the field.", "本次活动预计汇聚众多贵宾，包括业内顶尖专家学者。", "", "", "\"\""]]}, {"name": "活动的4流程环节（13-16）", "items": [["l2e1", "句13", "Interesting activities such as singing contests and debate competitions will be held to arouse students' enthusiasm for ____.", "我们将举办歌唱比赛、辩论赛等活动，以激发学生____方面的热情。", "13~16句选2句背。环节词汇：opening ceremony/keynote speech/lecture/interview/workshop/group discussion/debate/Q&A/presentation/competition/award presentation 等。", "Moreover, a series of competitions such as robot competition and aircraft competition will be held to arouse students' enthusiasm for innovation.", "此外，将举办机器人比赛、飞机比赛等一系列竞赛，激发学生的创新热情。"], ["l2e2", "句14", "Participants will be divided into teams for a collaborative challenge, designed to foster teamwork and creative problem-solving.", "参与者将分组进行团队协作挑战，旨在培养团队精神和创造性解决问题能力。", "", "", "\"\""], ["l2e3", "句15", "The event will commence with an opening ceremony, followed by a series of workshops and a keynote speech, and will conclude with a discussion session.", "活动以开幕式开始，随后是研讨会和主题演讲，最后以讨论环节收尾。", "", "", "\"\""], ["l2e4", "句16", "Following the opening ceremony, the event will feature a keynote speech, workshops, and a concluding discussion session.", "开幕式后，活动包含主题演讲、工作坊和最终互动讨论环节。", "", "", "\"\""]]}, {"name": "活动的5奖品收获·画饼（17-20）", "items": [["l2f1", "句17", "This will be a memorable and rewarding experience and the prizes and souvenirs will be very valuable.", "经历将是难忘的，奖品和纪念品将是宝贵的。", "17~20句任选2句背，写在第二段最后一句。", "In the end, the experience will be memorable and our prize will be very valuable.", "最后，这次经历将是难忘的，我们的奖品将是非常有价值的。"], ["l2f2", "句18", "To encourage more students to join, the top three winners will receive trophies and certificates, and all shortlisted participants will be awarded bonus points.", "为鼓励更多学生参加，前三名将获得奖杯和证书，所有入围者将获加分。", "", "", "\"\""], ["l2f3", "句19", "During the event, you will have the opportunity to meet like-minded individuals, engage in interesting activities, and enjoy a great time together.", "活动期间你将有机会结识志同道合的人，参与有趣活动，共度愉快时光。", "", "", "\"\""], ["l2f4", "句20", "This activity will allow you to contribute to the development of our university while gaining valuable experience in ____.", "此次活动将使你在获得____宝贵经验的同时，为学校发展做贡献。", "可结合六大方面：This activity offers a precious opportunity to broaden your horizons and enrich your campus life.", "", "\"\""]]}, {"name": "推荐地方/书籍/名人/电影/活动（21-27）", "items": [["l2g1", "句21 景点", "Located in ____, ____ is one of the most popular/famous scenic spots in the world.", "坐落于某地，某景点是世界上最受欢迎/著名的景点之一。", "21~24句交代推荐对象，放在推荐信第一点，全背。", "Located in Anhui, Hong village is one of the most popular scenic spots in China.", "位于安徽的宏村是中国最受欢迎的景点之一。"], ["l2g2", "句22 书籍电影", "Written by/Directed by ____, ____ is one of the most popular/famous books/movies in the world.", "由某人主笔/导演，某书/电影是世界上最受欢迎/著名的书/电影之一。", "", "The short play is adapted from Journey to the West, one of China's Four Great Classical Novels.", "这部短剧改编自中国四大古典名著之一《西游记》。"], ["l2g3", "句23 名人", "____ was an outstanding scientist during the Northern Song Dynasty, who made remarkable achievements in many fields.", "____是北宋时期一位杰出科学家，在许多领域取得卓越成就。", "", "", "\"\""], ["l2g4", "句24 活动", "Planned by the Student Union, the activity is one of the most popular events in our university.", "该活动由学生会策划，是我校最受欢迎的活动之一。", "", "", "\"\""], ["l2g5", "句25 对比推荐", "While I understand that A has advantages in ____, I believe B will provide you with a more profound and thought-provoking experience.", "虽然我知道A在____方面有优势，但我相信B会带给你更深刻、发人深省的体验。", "25~27句需联想特点和环节，任选1句背。可联想大作文原因分析句。", "", "\"\""], ["l2g6", "句26 强烈推荐", "I would highly recommend ____ for its/her/his exceptional ____ and remarkable ____.", "我强烈推荐____，因为它/她/他拥有卓越的____和非凡的____。", "", "I would highly recommend the book The Old Man and the Sea for its thought-provoking ideas and inspiring story.", "我强烈推荐《老人与海》，因为它思想深刻、故事鼓舞人心。"], ["l2g7", "句27 独特体验", "What makes ____ highly recommendable is the unique experience it offers, which includes ____.", "____之所以值得高度推荐，在于它提供的独特体验，其中包括____。", "可接：It offers you a good chance to do. / It will help you do. / You will gain/acquire/improve... from it. / It broadens your horizons.", "What makes the art exhibition highly recommendable is the unique experience it offers, which includes an art performance.", "极力推荐这个艺术展是因为它提供了独特体验，其中包含艺术表演环节。"]]}, {"name": "能力展示和要求（28-33）", "items": [["l2h1", "句28", "Over the past few years, I have consistently excelled in my role, which is evidenced by the awards and recognition I have received.", "我在工作中一直表现出色，所获奖项和认可就是证明。", "28~30句常用于自荐、推荐、求职，任选2句。31~33句用于提出要求（招聘/招募志愿者/找队友），任选2句。", "", "\"\""], ["l2h2", "句29", "I am a highly self-motivated and resilient individual, capable of maintaining focus and productivity in fast-paced environments.", "我是高度自律且有韧性的人，能在快节奏环境中保持专注高效。", "能力词汇：Self-motivation/Initiative/Resilience/Perseverance/Reliability/Diligence/Sense of Responsibility/Integrity/Leadership/Communication Skills/Teamwork/Creativity 等。", "", "\"\""], ["l2h3", "句30", "I thrive in collaborative settings and have often been the one to facilitate communication and integrate diverse viewpoints in the team.", "我在协作环境中能充分发挥能力，常充当促进沟通、整合不同观点的角色。", "", "", "\"\""], ["l2h4", "句31 要求", "The selected candidates will assist in conducting surveys, collecting and analyzing data on ____. Moreover, the candidates should be enthusiastic about ____ and have sound organization and communication skills.", "被选中的候选人将协助调查、收集分析____数据。此外应对____有热情并具备良好的组织和沟通能力。", "", "", "\"\""], ["l2h5", "句33 要求", "The candidates should be enthusiastic about ____ and have sound organization/communication/teaching/planning skills.", "候选人应对____有热情，并拥有良好的组织/沟通/教学/策划能力。", "万能句：No previous experience is required, for we will provide full training and guidance.", "", "\"\""]]}, {"name": "感谢和道歉（34-40）", "items": [["l2i1", "句34", "I am extremely grateful to you for your unselfish assistance/advice during the period of ____.", "我非常感谢你在____期间给我的无私帮助/建议。", "34~38句是\"拍马屁\"，感谢、道歉、邀请信都能用。", "I am extremely grateful to you for your unselfish assistance during the period of the cultural exchange program.", "我非常感谢你在文化交流项目期间给我的无私帮助。"], ["l2i2", "句35", "It is your hospitality/enthusiasm/assistance that enabled me to ____.", "正是你的款待/热情/帮助使我能够____。", "参考六大方面。", "", "\"\""], ["l2i3", "句36", "Without your generous help, I would not have made such great progress in ____.", "如果没有你的慷慨帮助，我就不会在____方面取得重大进步。", "", "", "\"\""], ["l2i4", "句37", "Without your generous help, I would not have had such a wonderful experience.", "如果没有你的慷慨帮助，我就不会有如此美妙的经历。", "", "Without your generous help, I would not have had such a wonderful experience.", "如果没有你慷慨帮助，我就不会有如此美妙的经历。"], ["l2i5", "句38", "All of us desire to improve our ability of ____ under your professional guidance.", "我们都希望在您的专业指导下提升____能力。", "邀请信也能用。", "", "\"\""], ["l2i6", "句39 道歉", "To make up for it, I am ready to immediately correct the mistake / offer my full assistance to resolve the matter.", "为了弥补，我准备立即纠正错误/全力协助解决此事。", "39~40句只用于道歉，任选1句。历年没有纯粹严肃的道歉信，最多忘记还CD、改拜访日期。", "", "\"\""], ["l2i7", "句40 道歉", "I assure you that I have learned a valuable lesson from this and will take concrete steps to ensure it does not happen again.", "我向你保证已从中吸取宝贵教训，并将采取具体措施确保不再发生。", "", "", "\"\""]]}, {"name": "通用型·非常重要全部背（41-50）", "items": [["l2j1", "句41", "We are badly in need of ____, which can help us ____. / We are in urgent need of ____.", "我们急需____，可用于帮助我们____。", "41~50句用途非常广泛，建议全背并灵活运用。仅需将\"我\"和\"你\"互相转化即可用于各种类型。", "Undoubtedly, students in rural primary schools are badly in need of assistance, which can help them receive a good education.", "毫无疑问，农村小学的学生非常需要帮助，帮助他们接受良好教育。"], ["l2j2", "句42", "Due to ____, it is convenient/inconvenient/possible/impossible for us to ____.", "由于____，我们做____是方便的/不方便的/可能的/不可能的。", "", "In the first place, due to the noisy environment, it's impossible for us to study effectively.", "首先，由于环境嘈杂，我们不可能有效学习。"], ["l2j3", "句43", "I wonder if you can ____ so that I can ____.", "我想知道你是否能____，这样我就能____。", "", "I wonder if you can visit my country in due course so that you can experience the charm of traditional Chinese culture.", "我想知道你是否有时间来我们国家游玩，体验中国传统文化魅力。"], ["l2j4", "句44", "We could have more opportunities to ____ if you improve ____.", "如果你能改进____，我们就有更多机会____。", "", "", "\"\""], ["l2j5", "句45", "It is advisable to ____, which can really help you ____.", "做____是明智的，这能帮你____。", "", "", "\"\""], ["l2j6", "句46", "Given the fact that ____, it would be wise for us to ____.", "鉴于____，我们做____才是明智的。", "", "Given your energy and lively personality, you are the perfect choice for the role of the Monkey King.", "鉴于你充沛的精力和活泼的性格，你非常适合出演美猴王。"], ["l2j7", "句47", "____ provides a unique opportunity to let you explore your creativity.", "____提供了独特机会让你探索创造力。", "", "This play offers a unique opportunity for us to explore creativity together.", "本剧为我们提供了一次共同探索创意的独特机会。"], ["l2j8", "句48", "Everyone agrees that your ____ is the key to the satisfactory outcome.", "大家都认为你的____是取得满意结果的关键。", "", "", "\"\""], ["l2j9", "句49", "____ allows you to experience different cultures and social customs.", "____让你体验不同文化和社会习俗。", "different cultures and social customs 可换为 encyclopedic knowledge of nature/science/history。", "The food festival allows you to experience different food cultures and social customs.", "美食节让你体验不同美食文化和社会风俗。"], ["l2j10", "句50", "I am confident that the students will not only have the opportunity to learn from you, but also to draw inspiration from your example.", "我相信学生们不仅有机会向你学习，还能从你的榜样中汲取灵感。", "", "I am confident that by interviewing the residents we will not only have the opportunity to understand the needs and challenges, but also to obtain valuable insights.", "我相信通过采访居民，我们不仅有机会了解需求和挑战，还能获得宝贵见解。"]]}, {"name": "通知/告示万能补充句（字数不够时用）", "items": [["l2k1", "补充1", "Please arrange your time in advance and attend the activity on time.", "请各位提前安排好时间，准时参加活动。", "放第二段尾，字数不够时使用。", "", "\"\""], ["l2k2", "补充2", "During the activity, please abide by the on-site order and follow the arrangements of the staff.", "活动期间请遵守现场秩序，听从工作人员安排。", "", "", "\"\""], ["l2k3", "补充3", "In order to ensure the smooth progress of the activity, please actively cooperate and jointly create a good activity atmosphere.", "为确保活动顺利进行，请大家积极配合，共同营造良好活动氛围。", "", "", "\"\""]]}]}, {"name": "第三段 · 表示情感 + 期待回信 + 落款", "tip": "表示感谢、歉意、致敬、问好 + 期待回信。落款一般写 Li Ming 在右下角。", "groups": [{"name": "第1句 表示情感", "items": [["l3a1", "感谢", "I would like to express my gratitude for your kind consideration of my suggestion/application.", "我想对您考虑我的建议/申请表示感谢。", "", "", "\"\""], ["l3a2", "歉意", "Please accept my sincere apology for any inconvenience that I have caused.", "给您带来的不便，请接受我诚挚的歉意。", "", "", "\"\""], ["l3a3", "祝愿", "I hope all the members will enjoy the journey. / For more information about the activity, please do not hesitate to contact me.", "我希望所有成员都能享受旅程 / 如需更多信息请随时联系我。", "", "", "\"\""], ["l3a4", "期待参与", "We would appreciate it very much if you could accept our invitation. / We hope for your active participation and make this event a grand success.", "如能接受邀请我们将不胜感激 / 期待您积极参与使活动圆满成功。", "", "", "\"\""], ["l3a5", "邀请莅临", "It would be our great honor if you could grace the occasion with your presence.", "如若您能莅临，我们将倍感荣幸。", "", "", "\"\""], ["l3a6", "问候家人", "Please give my best regards to your family. / Please send my best wishes to your family. / Kindly send my sincere regards to your family.", "请向家人致以最诚挚的问候。", "", "", "\"\""]]}, {"name": "第2句 期待回信", "items": [["l3b1", "待选1", "I would be grateful if you could reply at your earliest convenience.", "如能方便时尽快回复，我将不胜感激。", "", "", "\"\""], ["l3b2", "待选2", "Your prompt reply will be highly appreciated.", "非常感谢您的及时回复。", "", "", "\"\""], ["l3b3", "待选3", "I am looking forward to hearing from you soon.", "我期待很快收到您的来信。", "", "", "\"\""]]}, {"name": "落款", "items": [["l3c1", "落款", "Yours sincerely,\nLi Ming", "谨启，\n李明", "一般写李明，写在右下角。 don't sign your own name，use \"Li Ming\"。", "", "\"\""]]}]}]}, "small:notice": {"name": "小作文 · 通知 = 告示（Notice）模板", "tip": "通知等于告示，英文都是 notice，一般是举行活动、会议、比赛。与邀请信相比仅格式和一三两段不同，第二段相同。格式：标题 Notice 居中；正文；署名和日期在右下（如 December 20, 2025）。", "parts": [{"name": "第一段 · 通知概况 + 通知目的", "tip": "XX（活动）可以是 conference/workshop/seminar/lecture/forum/festival/exhibition/career fair 等。", "groups": [{"name": "第1句 通知概况", "items": [["n1a1", "待选1", "It is a pleasure to inform everyone that a ____ will be held in our university.", "很高兴通知大家，我校将举办一场____活动。", "", "", "\"\""], ["n1a2", "待选2", "We are pleased to announce that a ____ will be held in our university.", "我们很高兴宣布，我校将举办一场____活动。", "", "", "\"\""], ["n1a3", "待选3", "Attention all students interested in ____ on campus!", "校园里所有对____感兴趣的同学请注意！", "", "", "\"\""], ["n1a4", "待选4", "To enrich students' extracurricular life and improve communication among club members, our club will host a wonderful activity.", "为丰富学生课外生活、增进社团成员交流合作，我们社团将举办一场精彩活动。", "", "", "\"\""]]}, {"name": "第2句 通知目的", "items": [["n1b1", "待选1", "This notice is intended to introduce some details of this contest.", "本通知旨在介绍本次比赛的一些细节。", "", "", "\"\""], ["n1b2", "待选2", "This notice serves the purpose of introducing some of the activities.", "这则通知的目的是介绍一些活动。", "", "", "\"\""], ["n1b3", "待选3", "The relevant matters are hereby notified as follows.", "现将相关事宜通知如下。", "", "", "\"\""], ["n1b4", "待选4", "The following are the notifications of the relevant matters.", "以下是有关事项的通知。", "", "", "\"\""]]}]}, {"name": "第二段 · 具体内容", "tip": "与书信第二段相同，上文给出的50句全都可以使用。请切换到“书信”页勾选第二段句子。以下为真题示范句。", "groups": [{"name": "真题示范句", "items": [["n2a1", "职责要求好处", "To begin with, about the duties, the selected candidates will assist in conducting surveys, collecting and analyzing data. Secondly, about the requirements, the candidates should be enthusiastic and have sound organization, communication and planning skills. Last but not least, this project will allow you to contribute to the development while gaining valuable experience.", "首先关于职责，被选中的候选人将协助调查、收集分析数据。其次关于要求，候选人应热衷于此并具备良好的组织、沟通和策划能力。最后但同样重要的是，该项目将让你在获得宝贵经验的同时为发展做贡献。", "", "To begin with, about the duties, the selected candidates will assist in Prof. Smith's conducting surveys, collecting and analyzing data of students' sports activities on campus.", "首先关于职责，被选中的候选人将协助史密斯教授调查、收集分析校园体育活动数据。"], ["n2a2", "时间人员奖励", "The contest is scheduled in our assembly hall on Friday from 8:00 a.m. to 10:00 a.m. Students of all grades are eligible to enter the competition, including national and international students. In terms of encouragement and rewards, the top three students will all receive trophies and certificates.", "比赛定于周五上午8点到10点在大会厅举行。所有年级学生都有资格参赛，包括国内外学生。在鼓励奖励方面，前三名将获得奖杯和证书。", "", "", "\"\""]]}]}, {"name": "第三段 · 发出邀请 + 报名方式", "tip": "发出邀请+报名方式。报名邮箱常写 123456@qq.com 或扫码报名。", "groups": [{"name": "第三段待选", "items": [["n3a1", "待选1", "Put it into practice! If you are interested in ____, this will be a memorable experience for you. We are looking forward to your enthusiastic participation. Please email us at 123456@qq.com to sign up.", "快行动吧！如果你对____感兴趣，这将是一次难忘经历。期待您的热情参与。请发邮件至123456@qq.com报名。", "", "", "\"\""], ["n3a2", "待选2", "Welcome to join us. If you are interested in this activity and are willing to have a quite different experience these days, please do not hesitate to email us at 123456@qq.com.", "欢迎加入我们。如果你对这项活动感兴趣，愿意有一段完全不同的经历，请发邮件至123456@qq.com。", "", "", "\"\""], ["n3a3", "待选3", "If you are passionate about ____, this is an ideal opportunity for you! To apply, please email us at 123456@qq.com. Join us today, and make a difference in enhancing ____.", "如果你对____充满热情，这是理想机会！请发邮件至123456@qq.com申请。今天就加入我们，在____方面有所改变。", "", "", "\"\""], ["n3a4", "待选4", "We look forward to your active participation and believe this activity will bring you an unforgettable experience! Please scan the QR code below to sign up!", "期待大家积极参与，相信本次活动将带来难忘体验！请扫描下方二维码报名！", "", "", "\"\""]]}]}]}, "small:minutes": {"name": "小作文 · 纪要（Minutes of Meeting）模板", "tip": "纪要一般指会议纪要，格式与通知告示类似。23年新增题型，本质与备忘录相同，但还没考过。爸爸说：纪要也不过是换个格式的书信，核心内容不改变。格式：Minutes of Meeting / Date / Time / Location / Objective / Attendees / Meeting content，正文，Recorded by 署名+日期。", "parts": [{"name": "正文 · 六句结构", "tip": "导入/介绍 → 会议目的 → 大佬发言 → 手下赞同 → 最终决定 → 下次会议日期地点（可选）。", "groups": [{"name": "第1句 导入/介绍", "items": [["m1a1", "待选1", "The meeting commenced with a warm welcome from the ____, followed by an introduction to the purpose of gathering.", "会议以____的热烈欢迎开始，随后介绍了会议目的。", "", "", "\"\""], ["m1a2", "待选2", "The ____ delivered welcoming remarks, and provided a brief overview of the significance of ____.", "____致欢迎辞，并简要介绍了____的意义。", "", "", "\"\""]]}, {"name": "第2句 会议目的", "items": [["m2a1", "待选1", "The meeting aimed to briefly review the activity held last week.", "会议目的是简要回顾上周的活动。", "后边均可加：Many students/colleagues/professors participated in the discussion.", "", "\"\""], ["m2a2", "待选2", "The meeting aimed to make a plan for the activity to be held next week.", "会议目的是为下周举行的活动制定计划。", "", "", "\"\""], ["m2a3", "待选3", "The meeting aimed to discuss the problem/phenomenon of ____ and find some suitable solutions.", "会议目的是讨论____的问题/现象并找到合适的解决方案。", "", "", "\"\""]]}, {"name": "第3句 大佬发言", "items": [["m3a1", "待选1", "The chairman expressed the opinion that ____. / Experts believe that ____. / The majority of workers think that ____.", "董事长认为____ / 专家认为____ / 大多数员工认为____。", "省略号内容据会议主题定，可源于大作文二三段和小作文句子。不确定大佬是谁用 the speaker。", "The chairman expressed the opinion that enough attention must be paid to staff welfare by our company.", "董事长表示我们公司必须对员工福利给予足够重视。"], ["m3a2", "待选2", "A detailed presentation was delivered by ____, highlighting the mission, vision, and achievements of ____.", "发言人详细介绍了____的使命、愿景和成就。", "", "", "\"\""]]}, {"name": "第4句 手下赞同", "items": [["m4a1", "待选1", "The majority of those attendees were in favour of the statement/plan/decision.", "大多数参会人赞成这个表述/计划/决定。", "", "", "\"\""], ["m4a2", "待选2", "Participants engaged in an interactive discussion to address the challenges they faced during the activity.", "参会人进行了互动讨论，以解决活动中面临的挑战。", "", "", "\"\""]]}, {"name": "第5句 最终决定", "items": [["m5a1", "待选1", "The meeting agreed to hold the activity of ____. / As a concrete measure, the meeting decided that ____.", "会议同意举行____活动 / 作为具体措施，会议决定____。", "", "", "\"\""], ["m5a2", "待选2", "The meeting concluded with a vote of thanks extended to all participants for their active involvement and commitment.", "会议最后向所有参会者表示感谢，感谢他们的积极参与和投入。", "", "", "\"\""]]}, {"name": "第6句 下次会议（可选）", "items": [["m6a1", "待选1", "The date and location of the next meeting will be announced via email to all participants.", "下次会议的日期和地点将通过邮件通知所有参会者。", "一次性会议不可写（临时活动/紧急会议）；周期性会议可写（年度比赛/月度例会）。", "", "\"\""]]}]}]}};
+DATA.zhenti = {"big": [{"year": "2001", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "爱心", "topicEn": "love and care / 一盏灯照亮黑暗"}, {"year": "2002", "exam": "英语一", "kind": "图画", "tag": "", "topicZh": "文化交流", "topicEn": "cultural exchange / 美国女孩穿中国传统服饰"}, {"year": "2003", "exam": "英语一", "kind": "图画", "tag": "", "topicZh": "温室花朵", "topicEn": "greenhouse flowers / 温室花朵经不起风雨"}, {"year": "2004", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "新起点", "topicEn": "a new start / 终点又是新起点"}, {"year": "2005", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "赡养老人", "topicEn": "supporting the elderly / 老人被子女当球踢"}, {"year": "2006", "exam": "英语一", "kind": "图画·两幅图", "tag": "", "topicZh": "偶像崇拜", "topicEn": "idol worship / 年轻人盲目追星"}, {"year": "2007", "exam": "英语一", "kind": "图画", "tag": "", "topicZh": "自信", "topicEn": "self-confidence / 球员与守门员"}, {"year": "2008", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "合作", "topicEn": "cooperation / 蛤蟆"}, {"year": "2009", "exam": "英语一", "kind": "there be句型·图画", "tag": "", "topicZh": "网络的近与远", "topicEn": "the Internet / 蜘蛛互联网"}, {"year": "2010", "exam": "英语一", "kind": "there be句型·图画", "tag": "", "topicZh": "文化火锅", "topicEn": "cultural hotpot / 火锅煮多元文化"}, {"year": "2011", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "环境保护", "topicEn": "environmental protection / 旅途乱扔垃圾"}, {"year": "2012", "exam": "英语一", "kind": "图画·对话型", "tag": "", "topicZh": "乐观", "topicEn": "optimism / 面对倒翻的瓶子"}, {"year": "2013", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "选择", "topicEn": "choices / 毕业生十字路口"}, {"year": "2014", "exam": "英语一", "kind": "图画·两幅图", "tag": "", "topicZh": "相携", "topicEn": "mutual support / 母女相携同行"}, {"year": "2015", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "手机依赖", "topicEn": "smartphone addiction / 聚会低头看手机"}, {"year": "2016", "exam": "英语一", "kind": "图画·两幅图", "tag": "", "topicZh": "榜样", "topicEn": "role models / 父母以身作则"}, {"year": "2017", "exam": "英语一", "kind": "图画·两幅图", "tag": "", "topicZh": "有书与读书", "topicEn": "owning books vs reading"}, {"year": "2018", "exam": "英语一", "kind": "图画·非对话型", "tag": "", "topicZh": "选课", "topicEn": "course selection / 选难课还是易课"}, {"year": "2019", "exam": "英语一", "kind": "图画·对话型", "tag": "", "topicZh": "坚持", "topicEn": "persistence / 登山途中"}, {"year": "2020", "exam": "英语一", "kind": "图画·两幅图", "tag": "", "topicZh": "习惯", "topicEn": "habit / 习惯成自然"}, {"year": "2021", "exam": "英语一", "kind": "图画·对话型", "tag": "", "topicZh": "兴趣与传统文化", "topicEn": "interest and tradition"}, {"year": "2022", "exam": "英语一", "kind": "图画·对话型", "tag": "", "topicZh": "校园讲座", "topicEn": "campus lectures"}, {"year": "2023", "exam": "英语一", "kind": "图画·综合型", "tag": "", "topicZh": "赛龙舟", "topicEn": "dragon boat racing"}, {"year": "2024", "exam": "英语一", "kind": "图画+柱状图", "tag": "", "topicZh": "公园建设", "topicEn": "park construction / 过渡期"}, {"year": "2025", "exam": "英语一", "kind": "表格", "tag": "", "topicZh": "家电拥有量", "topicEn": "household appliances / 25年来首次考图表"}, {"year": "2026", "exam": "英语一", "kind": "双图表·饼+柱", "tag": "", "topicZh": "养老机器人", "topicEn": "elderly-care robots / 基本完成转向"}, {"year": "2010", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "移动通信", "topicEn": "mobile communication / 手机用户激增"}, {"year": "2011", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "国产品牌汽车", "topicEn": "domestic car brands / 份额上升"}, {"year": "2012", "exam": "英语二", "kind": "表格", "tag": "", "topicZh": "员工满意度", "topicEn": "job satisfaction / 年龄差异"}, {"year": "2013", "exam": "英语二", "kind": "柱状图(用饼图公式)", "tag": "", "topicZh": "大学生兼职", "topicEn": "part-time jobs"}, {"year": "2014", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "城乡人口变化", "topicEn": "urban-rural population"}, {"year": "2015", "exam": "英语二", "kind": "饼状图", "tag": "", "topicZh": "春节花销", "topicEn": "Spring Festival spending"}, {"year": "2016", "exam": "英语二", "kind": "饼状图", "tag": "", "topicZh": "旅游目的", "topicEn": "travel purposes"}, {"year": "2017", "exam": "英语二", "kind": "线状图", "tag": "", "topicZh": "博物馆参观", "topicEn": "museum visits"}, {"year": "2018", "exam": "英语二", "kind": "饼状图", "tag": "", "topicZh": "选餐厅", "topicEn": "choosing restaurants"}, {"year": "2019", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "毕业去向", "topicEn": "graduates' destinations"}, {"year": "2020", "exam": "英语二", "kind": "饼状图", "tag": "", "topicZh": "手机阅读", "topicEn": "mobile reading"}, {"year": "2021", "exam": "英语二", "kind": "柱状图(用饼图公式)", "tag": "", "topicZh": "锻炼方式", "topicEn": "ways of exercise"}, {"year": "2022", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "快递业务量", "topicEn": "express delivery"}, {"year": "2023", "exam": "英语二", "kind": "线状图", "tag": "", "topicZh": "健康素养", "topicEn": "health literacy"}, {"year": "2024", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "劳动实践课", "topicEn": "labor practice"}, {"year": "2025", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "老年人休闲活动", "topicEn": "elderly leisure"}, {"year": "2026", "exam": "英语二", "kind": "柱状图", "tag": "", "topicZh": "儿童户外活动", "topicEn": "outdoor activities"}], "small": [{"year": "2010", "exam": "英语一", "kind": "通知", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2011", "exam": "英语一", "kind": "推荐信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2012", "exam": "英语一", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2013", "exam": "英语一", "kind": "邀请信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2014", "exam": "英语一", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2015", "exam": "英语一", "kind": "推荐信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2016", "exam": "英语一", "kind": "通知", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2017", "exam": "英语一", "kind": "推荐信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2018", "exam": "英语一", "kind": "邀请信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2019", "exam": "英语一", "kind": "答复信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2020", "exam": "英语一", "kind": "通知", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2021", "exam": "英语一", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2022", "exam": "英语一", "kind": "邀请信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2023", "exam": "英语一", "kind": "通知", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2024", "exam": "英语一", "kind": "答复信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2025", "exam": "英语一", "kind": "答复信·介绍手工展", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2026", "exam": "英语一", "kind": "答复信·介绍家书", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2010", "exam": "英语二", "kind": "感谢信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2011", "exam": "英语二", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2012", "exam": "英语二", "kind": "投诉信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2013", "exam": "英语二", "kind": "邀请信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2014", "exam": "英语二", "kind": "求助信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2015", "exam": "英语二", "kind": "通知", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2016", "exam": "英语二", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2017", "exam": "英语二", "kind": "介绍信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2018", "exam": "英语二", "kind": "道歉信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2019", "exam": "英语二", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2020", "exam": "英语二", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2021", "exam": "英语二", "kind": "邀请信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2022", "exam": "英语二", "kind": "邀请信·美食节", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2023", "exam": "英语二", "kind": "建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2024", "exam": "英语二", "kind": "介绍信·宏村", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2025", "exam": "英语二", "kind": "邀请信·话剧", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "2026", "exam": "英语二", "kind": "答复信·旅行视频", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "早年", "exam": "英语一", "kind": "2005 辞职信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "早年", "exam": "英语一", "kind": "2006 介绍信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "早年", "exam": "英语一", "kind": "2007 建议信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "早年", "exam": "英语一", "kind": "2008 道歉信", "tag": "", "topicZh": "", "topicEn": ""}, {"year": "早年", "exam": "英语一", "kind": "2009 建议信", "tag": "", "topicZh": "", "topicEn": ""}], "topic": [{"y": "2001", "exam": "英语一", "kind": "图画", "title": "爱心 · 一盏灯照亮黑暗", "topicEn": "love and care", "words": [["爱心", "love"], ["同情心", "compassion"], ["善意", "kindness / goodwill"], ["传递爱心", "spread love"], ["为生活带来光明", "bring light to one's life"], ["温暖人心", "warm one's heart"], ["冷漠（反面）", "indifference / apathy"], ["无私奉献", "selfless devotion"], ["志愿服务", "voluntary service"], ["社会道德", "social morality"], ["互帮互助", "mutual help"]], "sentence": "爱是一盏灯，越在暗处越明亮。", "sentenceEn": "Love is a lamp that shines brighter where it is darkest."}, {"y": "2002", "exam": "英语一", "kind": "图画", "title": "文化交流 · 美国女孩穿中国传统服饰", "topicEn": "cultural exchange", "words": [["文化交流", "cultural exchange"], ["中国传统服饰", "traditional Chinese clothing"], ["跨文化沟通", "cross-cultural communication"], ["拥抱异国文化", "embrace a foreign culture"], ["架起文化桥梁", "bridge cultural gaps"], ["文化认同", "cultural identity"], ["文化多样性", "cultural diversity"], ["文化融合", "cultural integration"], ["文化遗产", "cultural heritage"], ["相互理解", "mutual understanding"], ["文化自信", "cultural confidence"]], "sentence": "文化交流架起理解的桥梁。", "sentenceEn": "Cultural exchange builds a bridge of understanding."}, {"y": "2003", "exam": "英语一", "kind": "图画", "title": "温室花朵 · 经不起风雨", "topicEn": "greenhouse flowers", "words": [["独立", "independence"], ["逆境", "adversity / setback"], ["挫折", "frustration"], ["克服困难", "overcome difficulties"], ["在逆境中成长", "grow through adversity"], ["培养韧性", "build resilience"], ["过度保护（反面）", "overprotect / shelter"], ["毅力", "perseverance"], ["走出舒适区", "step out of one's comfort zone"], ["人生阅历", "life experience"], ["坚强意志", "a strong will"]], "sentence": "温室里的花朵经不起风雨。", "sentenceEn": "Flowers in a greenhouse cannot withstand wind and rain."}, {"y": "2004", "exam": "英语一", "kind": "图画", "title": "新起点 · 终点又是新起点", "topicEn": "a new start", "words": [["新起点", "a new starting point"], ["持续进步", "continuous progress"], ["转折点", "a turning point"], ["重新出发", "start over"], ["追求目标", "pursue one's goal"], ["拥抱变化", "embrace change"], ["止步不前（反面）", "stand still / rest on one's laurels"], ["精益求精", "strive for excellence"], ["终身学习", "lifelong learning"], ["进取精神", "enterprising spirit"], ["适应力", "adaptability"]], "sentence": "终点只是下一段旅程的起点。", "sentenceEn": "The finishing line is but the starting point of the next journey."}, {"y": "2005", "exam": "英语一", "kind": "图画", "title": "赡养老人 · 老人被子女当球踢", "topicEn": "supporting the elderly", "words": [["赡养老人", "support the elderly"], ["孝道", "filial piety"], ["老龄化社会", "aging society"], ["关爱老人", "care for the aged"], ["照顾年迈父母", "look after aging parents"], ["尊老", "respect the elderly"], ["忽视老人（反面）", "neglect the elderly"], ["尊老爱幼", "respect the old and cherish the young"], ["养老院", "nursing home"], ["孤独", "loneliness"], ["养老服务", "elderly care"]], "sentence": "赡养父母是子女不可推卸的责任。", "sentenceEn": "Supporting parents is a duty children cannot shirk."}, {"y": "2006", "exam": "英语一", "kind": "图画", "title": "偶像崇拜 · 年轻人盲目追星", "topicEn": "idol worship", "words": [["偶像崇拜", "idol worship"], ["榜样", "role model"], ["名人", "celebrity"], ["盲目追随", "follow blindly"], ["敬仰", "look up to"], ["从中汲取力量", "draw inspiration from"], ["盲目崇拜（反面）", "blind worship"], ["积极影响", "positive influence"], ["明星文化", "star culture"], ["理性追星", "rational idol worship"], ["价值观", "values"]], "sentence": "年轻人盲目追星值得我们深思。", "sentenceEn": "Young people's blind star-chasing deserves our reflection."}, {"y": "2007", "exam": "英语一", "kind": "图画", "title": "自信 · 球员与守门员", "topicEn": "self-confidence", "words": [["自信", "self-confidence"], ["自尊", "self-esteem"], ["自我信念", "self-belief"], ["相信自己", "believe in oneself"], ["增强自信", "boost one's confidence"], ["勇敢面对挑战", "face challenges bravely"], ["自卑（反面）", "inferiority / self-doubt"], ["勇气", "courage"], ["乐观", "optimism"], ["自我价值", "self-worth"], ["从众", "follow the herd"]], "sentence": "自信是成功的第一秘诀。", "sentenceEn": "Self-confidence is the first secret of success."}, {"y": "2008", "exam": "英语一", "kind": "图画", "title": "合作 · 蛤蟆", "topicEn": "cooperation", "words": [["合作", "cooperation"], ["团队合作", "teamwork"], ["协作", "collaboration"], ["齐心协力", "work together / make joint efforts"], ["携手", "join hands"], ["汇聚力量", "pool efforts"], ["单打独斗（反面）", "go it alone"], ["互利共赢", "mutual benefit"], ["团队精神", "team spirit"], ["达成共识", "reach a consensus"], ["协同效应", "synergy"]], "sentence": "合作使弱者变强，使强者更强。", "sentenceEn": "Cooperation turns the weak strong and the strong stronger."}, {"y": "2009", "exam": "英语一", "kind": "图画", "title": "网络的近与远 · 蜘蛛互联网", "topicEn": "the Internet", "words": [["互联网", "the Internet"], ["网络交流", "online communication"], ["虚拟世界", "virtual world"], ["拉近人与人的距离", "bring people closer"], ["疏远人与人（反面）", "alienate people / drive people apart"], ["面对面交流", "face-to-face interaction"], ["网络成瘾（反面）", "online addiction"], ["社交媒体", "social media"], ["数字时代", "the digital age"], ["信息技术", "information technology"], ["屏幕时间", "screen time"]], "sentence": "网络拉近了世界，却疏远了人心。", "sentenceEn": "The Internet connects the world but alienates people's hearts."}, {"y": "2010", "exam": "英语一", "kind": "图画", "title": "文化火锅 · 火锅煮多元文化", "topicEn": "cultural hotpot", "words": [["文化融合", "cultural integration"], ["文化交融", "cultural fusion"], ["大熔炉", "melting pot"], ["融合多元文化", "blend diverse cultures"], ["吸收外来元素", "absorb foreign elements"], ["文化包容", "cultural tolerance"], ["丧失文化认同（反面）", "lose cultural identity"], ["文化多样性", "cultural diversity"], ["文化交流", "cultural exchange"], ["开放包容", "open-mindedness"], ["全球化", "globalization"]], "sentence": "文化火锅既美味又营养。", "sentenceEn": "The cultural hotpot is both delicious and nutritious."}, {"y": "2011", "exam": "英语一", "kind": "图画", "title": "环境保护 · 旅途乱扔垃圾", "topicEn": "environmental protection", "words": [["环境保护", "environmental protection"], ["生态环境", "ecological environment"], ["可持续发展", "sustainable development"], ["保护环境", "protect the environment"], ["减少污染", "reduce pollution"], ["绿色环保", "go green"], ["环境恶化（反面）", "environmental degradation"], ["低碳生活", "low-carbon lifestyle"], ["资源保护", "conservation"], ["气候变化", "climate change"], ["环保的", "eco-friendly"]], "sentence": "旅途不应只留脚印，不留垃圾。", "sentenceEn": "A journey should leave behind only footprints, not litter."}, {"y": "2012", "exam": "英语一", "kind": "图画", "title": "乐观 · 面对倒翻的瓶子", "topicEn": "optimism", "words": [["乐观", "optimism"], ["积极心态", "a positive attitude"], ["希望", "hope"], ["保持乐观", "stay optimistic"], ["看到光明面", "see the bright side"], ["调整心态", "adjust one's attitude"], ["悲观（反面）", "pessimism"], ["韧性", "resilience"], ["感恩", "gratitude"], ["平和心态", "peace of mind"], ["积极思维", "positive thinking"]], "sentence": "面对打翻的瓶子，态度决定一切。", "sentenceEn": "Facing a spilled bottle, attitude is everything."}, {"y": "2013", "exam": "英语一", "kind": "图画", "title": "选择 · 毕业生十字路口", "topicEn": "choices", "words": [["选择", "choice"], ["决定", "decision"], ["选项", "option"], ["做出选择", "make a choice"], ["权衡利弊", "weigh the pros and cons"], ["遵从内心", "follow one's heart"], ["犹豫不决（反面）", "hesitate"], ["创业", "start a business"], ["出国留学", "study abroad"], ["考研", "pursue postgraduate study"], ["求职", "apply for a job"]], "sentence": "不同的选择，不同的人生。", "sentenceEn": "Different choices lead to different paths in life."}, {"y": "2014", "exam": "英语一", "kind": "图画", "title": "相携 · 母女相携同行", "topicEn": "mutual support", "words": [["孝道", "filial piety"], ["关爱老人", "care for the elderly"], ["家庭赡养", "family support"], ["陪伴年迈父母", "accompany aging parents"], ["尽孝", "show filial respect"], ["为父母养老", "support one's parents in old age"], ["遗弃老人（反面）", "abandon the elderly"], ["尊老爱幼", "respect the old and cherish the young"], ["养老服务", "elderly care"], ["传统美德", "traditional virtue"], ["家庭责任", "family responsibility"]], "sentence": "小时候父母牵我们长大，长大后我们陪父母变老。", "sentenceEn": "Parents held our hands as we grew; we hold theirs as they age."}, {"y": "2015", "exam": "英语一", "kind": "图画", "title": "手机依赖 · 聚会低头看手机", "topicEn": "smartphone addiction", "words": [["手机依赖", "smartphone addiction"], ["低头族", "phubbing / phone addicts"], ["智能手机", "smartphone"], ["盯着手机", "be glued to the phone"], ["过度使用（反面）", "excessive use"], ["面对面交流", "face-to-face communication"], ["数字排毒（改善）", "digital detox"], ["屏幕成瘾", "screen addiction"], ["社交媒体", "social media"], ["自律", "self-discipline"], ["科技滥用", "overuse of technology"]], "sentence": "桌上最远的距离，是我在你面前你却在看手机。", "sentenceEn": "The greatest distance at a table is when you stare at your phone instead of at me."}, {"y": "2016", "exam": "英语一", "kind": "图画", "title": "榜样 · 父母以身作则", "topicEn": "role models", "words": [["榜样", "role model"], ["示范", "example"], ["父母的影响", "parental influence"], ["树立好榜样", "set a good example"], ["以身作则", "teach by example / lead by example"], ["效仿", "follow suit"], ["误导（反面）", "mislead"], ["家庭教育", "family education"], ["道德培养", "moral cultivation"], ["积极影响", "positive influence"], ["言行一致", "consistency between words and deeds"]], "sentence": "父母是孩子最好的老师。", "sentenceEn": "Parents are the best teachers of their children."}, {"y": "2017", "exam": "英语一", "kind": "图画", "title": "有书与读书 · 有书却不读", "topicEn": "owning books vs reading", "words": [["读书", "reading"], ["行动", "action"], ["知识", "knowledge"], ["付诸实践", "put into practice"], ["学以致用", "apply what one has learned"], ["知行合一", "turn knowledge into action"], ["空谈（反面）", "empty talk"], ["行胜于言", "actions speak louder than words"], ["脚踏实地", "down-to-earth"], ["执行力", "execution"], ["终身学习", "lifelong learning"]], "sentence": "拥有书不等于读懂书。", "sentenceEn": "Owning a book is not the same as reading it."}, {"y": "2018", "exam": "英语一", "kind": "图画", "title": "选课 · 选难课还是易课", "topicEn": "course selection", "words": [["选课", "course selection"], ["挑战", "challenge"], ["舒适区", "comfort zone"], ["选择有挑战的课程", "choose challenging courses"], ["走出舒适区", "step out of one's comfort zone"], ["逼自己一把", "push oneself"], ["走捷径（反面）", "take the easy way out"], ["高分低能", "high scores but poor ability"], ["自我提升", "self-improvement"], ["开阔视野", "broaden one's horizons"], ["好奇心", "curiosity"]], "sentence": "挑战自己比选择安逸更重要。", "sentenceEn": "Challenging oneself matters more than choosing comfort."}, {"y": "2019", "exam": "英语一", "kind": "图画", "title": "坚持 · 登山途中", "topicEn": "persistence", "words": [["坚持", "perseverance"], ["毅力", "persistence"], ["旅途", "the journey"], ["继续前行", "keep going"], ["永不放弃", "never give up"], ["坚持做某事", "persist in / stick to"], ["半途而废（反面）", "give up halfway"], ["决心", "determination"], ["耐力", "endurance"], ["目标", "goal"], ["韧性", "resilience"]], "sentence": "路虽远，行则将至。", "sentenceEn": "The journey may be long, but perseverance leads to the destination."}, {"y": "2020", "exam": "英语一", "kind": "图画", "title": "习惯 · 习惯成自然", "topicEn": "habit", "words": [["习惯", "habit"], ["日常惯例", "routine"], ["自律", "self-discipline"], ["养成好习惯", "form / develop a good habit"], ["坚持（习惯）", "stick to"], ["改掉坏习惯", "break a bad habit"], ["拖延（反面）", "procrastination"], ["持之以恒", "persistence / perseverance"], ["时间管理", "time management"], ["自控力", "self-control"], ["日常作息", "daily routine"]], "sentence": "优秀是一种习惯。", "sentenceEn": "Excellence is a habit."}, {"y": "2021", "exam": "英语一", "kind": "图画", "title": "兴趣与传统文化 · 孩子钟情传统文化", "topicEn": "interest and tradition", "words": [["兴趣", "interest"], ["传统文化", "traditional culture"], ["爱好", "hobby"], ["培养兴趣", "cultivate an interest"], ["弘扬传统文化", "carry forward traditional culture"], ["兴趣与传统结合", "combine interest with tradition"], ["失去兴趣（反面）", "lose interest"], ["文化遗产", "cultural heritage"], ["文化自信", "cultural confidence"], ["热情", "passion"], ["文化创新", "cultural innovation"]], "sentence": "把热爱与传统结合，方能行稳致远。", "sentenceEn": "Combining passion with tradition leads to lasting success."}, {"y": "2022", "exam": "英语一", "kind": "图画", "title": "校园讲座 · 开眼界", "topicEn": "campus lectures", "words": [["讲座", "lecture"], ["广泛学习", "broad learning"], ["校园活动", "campus activity"], ["听讲座", "attend lectures"], ["开阔视野", "broaden one's horizons"], ["课本之外的学习", "learning beyond the textbook"], ["视野狭隘（反面）", "narrow-minded"], ["终身学习", "lifelong learning"], ["通识教育", "general education"], ["好奇心", "curiosity"], ["知识积累", "accumulation of knowledge"]], "sentence": "多听一堂课，多开一扇窗。", "sentenceEn": "Each lecture opens a new window to the world."}, {"y": "2023", "exam": "英语一", "kind": "图画", "title": "赛龙舟 · 端午龙舟竞渡", "topicEn": "dragon boat racing", "words": [["赛龙舟", "dragon boat racing"], ["传统文化", "traditional culture"], ["文化遗产", "cultural heritage"], ["传承传统", "carry forward traditions"], ["保护文化遗产", "preserve cultural heritage"], ["庆祝传统节日", "celebrate traditional festivals"], ["文化流失（反面）", "the loss of culture"], ["非物质文化遗产", "intangible cultural heritage"], ["文化自信", "cultural confidence"], ["民族复兴", "national rejuvenation"], ["民族自豪感", "national pride"]], "sentence": "传统节日让文化活在当下。", "sentenceEn": "Traditional festivals keep culture alive in the present."}, {"y": "2024", "exam": "英语一", "kind": "图画+柱状图", "title": "公园建设 · 公园渐多市民健身", "topicEn": "park construction", "words": [["公园建设", "park construction"], ["全民健身", "national fitness"], ["绿地", "green space"], ["修建更多公园", "build more parks"], ["改善生活环境", "improve the living environment"], ["促进体育锻炼", "promote physical exercise"], ["基础设施建设", "infrastructure construction"], ["久坐（反面）", "a sedentary lifestyle"], ["公共设施", "public facilities"], ["健康生活方式", "a healthy lifestyle"], ["城市规划", "urban planning"], ["幸福感", "sense of well-being"]], "sentence": "家门口的公园是民生幸福的标尺。", "sentenceEn": "Neighborhood parks measure people's happiness."}, {"y": "2025", "exam": "英语一", "kind": "表格", "title": "家电拥有量 · 家电拥有量攀升", "topicEn": "household appliances", "words": [["家用电器", "household appliances"], ["空调", "air conditioner"], ["洗衣机", "washing machine"], ["电冰箱", "refrigerator"], ["拥有量上升", "rising ownership"], ["提高生活水平", "improve living standards"], ["物质享受", "material comfort"], ["消费升级", "consumption upgrade"], ["经济发展", "economic development"], ["现代化", "modernization"], ["生活质量", "quality of life"], ["消费能力", "purchasing power"]], "sentence": "家电走进千家万户，映照生活水平提升。", "sentenceEn": "Appliances in millions of homes mirror rising living standards."}, {"y": "2026", "exam": "英语一", "kind": "双图表", "title": "养老机器人 · 接受度与顾虑", "topicEn": "elderly-care robots", "words": [["养老机器人", "elderly-care robot"], ["人工智能", "artificial intelligence"], ["老龄人口", "aging population"], ["接受度", "acceptance level"], ["辅助老人", "assist the elderly"], ["提供陪伴", "provide companionship"], ["安全（首要关注点）", "safety"], ["价格（关注点）", "price"], ["便利（关注点）", "convenience"], ["智慧养老", "smart elderly care"], ["科技向善", "technology for good"], ["人形机器人", "humanoid robot"], ["数据隐私", "data privacy"]], "sentence": "科技正在为养老提供新方案。", "sentenceEn": "Technology is offering new solutions to elderly care."}, {"y": "2010", "exam": "英语二", "kind": "柱状图", "title": "移动通信 · 手机用户数量激增", "topicEn": "mobile communication", "words": [["手机用户", "mobile phone subscriptions"], ["普及率", "penetration rate"], ["电信市场", "telecom market"], ["急剧上升", "rise sharply"], ["广泛普及", "widespread adoption"], ["连接人们", "connect people"], ["数字鸿沟（反面）", "the digital divide"], ["互联网", "the Internet"], ["信息技术", "information technology"], ["数字时代", "the digital age"], ["智能手机", "smartphone"]], "sentence": "移动通信正在缩小数字鸿沟。", "sentenceEn": "Mobile communication is bridging the digital divide."}, {"y": "2011", "exam": "英语二", "kind": "柱状图", "title": "国产品牌汽车 · 国产车份额上升", "topicEn": "domestic car brands", "words": [["市场份额", "market share"], ["国产品牌", "domestic brands"], ["汽车产业", "the automobile industry"], ["扩大份额", "gain market share"], ["与……竞争", "compete with"], ["产品质量与售后服务", "product quality and after-sales service"], ["良好口碑", "good reputation"], ["制造业", "manufacturing"], ["经济增长", "economic growth"], ["品牌建设", "brand building"], ["自主创新", "independent innovation"]], "sentence": "国产品牌正在崛起。", "sentenceEn": "Domestic brands are on the rise."}, {"y": "2012", "exam": "英语二", "kind": "表格", "title": "员工满意度 · 不同年龄满意度各异", "topicEn": "job satisfaction", "words": [["工作满意度", "job satisfaction"], ["员工幸福感", "employee well-being"], ["工作生活平衡", "work-life balance"], ["提升满意度", "improve job satisfaction"], ["加薪", "raise salaries"], ["职业发展", "career development"], ["高流失率（反面）", "high turnover"], ["员工福利", "employee benefit"], ["幸福指数", "happiness index"], ["职场文化", "workplace culture"], ["职业成就感", "job fulfillment"]], "sentence": "不同年龄的员工满意度差异明显。", "sentenceEn": "Employees of different ages differ noticeably in satisfaction."}, {"y": "2013", "exam": "英语二", "kind": "柱状图", "title": "大学生兼职 · 兼职比例", "topicEn": "part-time jobs", "words": [["兼职", "part-time job"], ["大学生", "college students"], ["工作经验", "work experience"], ["积累工作经验", "gain work experience"], ["赚零花钱", "earn pocket money"], ["平衡学业与工作", "balance study and work"], ["分散学业（反面）", "distract from study"], ["实习", "internship"], ["奖学金", "scholarship"], ["勤工俭学", "work-study program"], ["社会实践", "social practice"]], "sentence": "兼职让学生提前接触社会。", "sentenceEn": "Part-time jobs expose students to society early."}, {"y": "2014", "exam": "英语二", "kind": "柱状图", "title": "城乡人口变化 · 城镇升农村降", "topicEn": "urban-rural population", "words": [["城镇化", "urbanization"], ["农村人口", "rural population"], ["城镇人口", "urban population"], ["迁往城市", "migrate to cities"], ["乡城迁移", "rural-to-urban migration"], ["城市扩张", "urban expansion"], ["农村空心化（反面）", "rural hollowing"], ["城市发展", "urban development"], ["农民工", "migrant workers"], ["基础设施", "infrastructure"], ["区域差异", "regional disparity"]], "sentence": "越来越多人从农村涌向城市。", "sentenceEn": "More and more people are moving from rural to urban areas."}, {"y": "2015", "exam": "英语二", "kind": "饼图", "title": "春节花销 · 花销构成", "topicEn": "Spring Festival spending", "words": [["假期花销", "holiday spending"], ["春节", "the Spring Festival"], ["消费", "consumption"], ["送礼", "gift giving"], ["旅游支出", "travel spending"], ["理性消费", "reasonable consumption"], ["过度消费（反面）", "overspending"], ["走亲访友", "visit relatives and friends"], ["居民消费", "consumer spending"], ["节日经济", "festival economy"], ["消费升级", "consumption upgrade"]], "sentence": "春节开销折射传统节日文化。", "sentenceEn": "Spring Festival spending reflects traditional festival culture."}, {"y": "2016", "exam": "英语二", "kind": "饼图", "title": "旅游目的 · 大学生旅游目的", "topicEn": "travel purposes", "words": [["旅游目的", "travel purpose"], ["旅游", "tourism"], ["大学生", "college students"], ["开阔视野", "broaden one's horizons"], ["缓解压力", "relieve stress"], ["观光游览", "go sightseeing"], ["体验当地文化", "experience local culture"], ["名胜古迹", "scenic spots and historical sites"], ["拥抱大自然", "embrace nature"], ["文化旅游", "cultural tourism"], ["休闲", "leisure"]], "sentence": "旅游既是观光，也是解压。", "sentenceEn": "Travel is both sightseeing and stress relief."}, {"y": "2017", "exam": "英语二", "kind": "折线图", "title": "博物馆 · 参观热度升", "topicEn": "museum visits", "words": [["博物馆", "museum"], ["参观人数", "the number of visitors"], ["文化机构", "cultural institutions"], ["稳步增长", "grow steadily"], ["吸引参观者", "attract visitors"], ["丰富文化生活", "enrich cultural life"], ["文化消费", "cultural consumption"], ["文化遗产", "cultural heritage"], ["公共文化服务", "public cultural service"], ["文化自信", "cultural confidence"], ["精神需求", "spiritual needs"]], "sentence": "博物馆越来越受大众欢迎。", "sentenceEn": "Museums are growing in popularity."}, {"y": "2018", "exam": "英语二", "kind": "饼图", "title": "选餐厅 · 选餐厅看什么", "topicEn": "choosing restaurants", "words": [["用餐选择", "dining choice"], ["消费者偏好", "consumer preference"], ["餐厅", "restaurant"], ["挑选餐厅", "choose a restaurant"], ["食品质量", "food quality"], ["考虑因素", "take factors into account"], ["价格敏感", "price sensitivity"], ["消费习惯", "consumption habits"], ["服务业", "the service industry"], ["顾客满意度", "customer satisfaction"], ["食品安全", "food safety"]], "sentence": "食客越来越看重特色与服务。", "sentenceEn": "Diners increasingly value specialty and service."}, {"y": "2019", "exam": "英语二", "kind": "柱状图", "title": "毕业去向 · 毕业去向多元化", "topicEn": "graduates' destinations", "words": [["毕业生去向", "graduate destinations"], ["就业", "employment"], ["深造", "further study"], ["找到工作", "find a job"], ["继续深造", "pursue further study"], ["自主创业", "start a business"], ["失业（反面）", "unemployment"], ["职业规划", "career planning"], ["就业市场", "the job market"], ["高等教育", "higher education"], ["职业道路", "career path"]], "sentence": "毕业去向日益多元。", "sentenceEn": "Graduates' career paths are becoming increasingly diverse."}, {"y": "2020", "exam": "英语二", "kind": "饼图", "title": "手机阅读 · 阅读目的", "topicEn": "mobile reading", "words": [["手机阅读", "mobile reading"], ["阅读目的", "reading purpose"], ["数字阅读", "digital reading"], ["用手机阅读", "read on mobile phones"], ["获取信息", "acquire information"], ["消磨时间", "kill time"], ["碎片化阅读（反面）", "fragmented reading"], ["阅读习惯", "reading habits"], ["电子书", "e-books"], ["信息获取", "information acquisition"], ["终身学习", "lifelong learning"]], "sentence": "手机既是学习工具，也是娱乐平台。", "sentenceEn": "The phone is both a study tool and an entertainment platform."}, {"y": "2021", "exam": "英语二", "kind": "柱状图", "title": "锻炼方式 · 独自还是结伴", "topicEn": "ways of exercise", "words": [["体育锻炼", "physical exercise"], ["健身", "fitness"], ["锻炼习惯", "exercise habits"], ["进行锻炼", "take exercise"], ["保持健康", "keep fit"], ["健身", "work out"], ["久坐（反面）", "a sedentary lifestyle"], ["广场舞", "square dancing"], ["徒步", "hiking"], ["骑自行车", "cycling"], ["全民健身", "national fitness"]], "sentence": "无论独自还是结伴，锻炼都有益健康。", "sentenceEn": "Whether alone or with others, exercise benefits health."}, {"y": "2022", "exam": "英语二", "kind": "柱状图", "title": "快递业务量 · 激增", "topicEn": "express delivery", "words": [["快递", "express delivery"], ["网上购物", "online shopping"], ["物流", "logistics"], ["配送包裹", "deliver packages"], ["线上下单", "place orders online"], ["业务繁荣", "booming business"], ["包装浪费（反面）", "packaging waste"], ["电子商务", "e-commerce"], ["乡村振兴", "rural revitalization"], ["消费经济", "consumer economy"], ["快递业", "the delivery industry"]], "sentence": "快递业随电商飞速发展。", "sentenceEn": "The express delivery industry is booming with e-commerce."}, {"y": "2023", "exam": "英语二", "kind": "折线图", "title": "健康素养 · 稳步提升", "topicEn": "health literacy", "words": [["健康素养", "health literacy"], ["健康意识", "health awareness"], ["公共卫生", "public health"], ["提升健康素养", "improve health literacy"], ["增强健康意识", "raise health awareness"], ["养成健康习惯", "adopt healthy habits"], ["健康意识薄弱（反面）", "poor health awareness"], ["亚健康", "sub-health"], ["慢性病", "chronic disease"], ["健康饮食", "healthy diet"], ["疾病预防", "disease prevention"]], "sentence": "居民健康素养稳步提升。", "sentenceEn": "Residents' health literacy has been steadily improving."}, {"y": "2024", "exam": "英语二", "kind": "柱状图", "title": "劳动实践课 · 各项收获", "topicEn": "labor practice", "words": [["劳动实践", "labor practice"], ["实践能力", "practical skills"], ["动手学习", "hands-on learning"], ["获得实践能力", "gain practical skills"], ["在实践中学习", "learn through practice"], ["培养能力", "develop abilities"], ["死读书（反面）", "bookish knowledge"], ["全面发展", "all-round development"], ["素质教育", "well-rounded education"], ["实践教育", "practical education"], ["生活技能", "life skills"]], "sentence": "劳动课让学生在实践中学习。", "sentenceEn": "Labor courses let students learn through practice."}, {"y": "2025", "exam": "英语二", "kind": "柱状图", "title": "老年人休闲活动 · 老人休闲", "topicEn": "elderly leisure", "words": [["休闲活动", "leisure activities"], ["看电视", "watch TV"], ["散步", "take a walk"], ["养花", "gardening"], ["下棋", "play chess"], ["度过闲暇时光", "spend leisure time"], ["丰富老人生活", "enrich the lives of the elderly"], ["孤独（反面）", "loneliness"], ["老龄化社会", "aging society"], ["养老服务", "elderly care"], ["生活质量", "quality of life"], ["精神需求", "spiritual needs"]], "sentence": "老人的退休生活日益丰富多彩。", "sentenceEn": "The retired life of the elderly is becoming richer and more colorful."}, {"y": "2026", "exam": "英语二", "kind": "柱状图", "title": "儿童户外活动 · 户外益处", "topicEn": "outdoor activities", "words": [["户外活动", "outdoor activities"], ["儿童", "children"], ["体育锻炼", "physical exercise"], ["满足好奇心", "satisfy curiosity"], ["培养观察能力", "develop observational skills"], ["增强体质", "strengthen physical fitness"], ["增强亲子关系", "strengthen parent-child bonds"], ["屏幕成瘾（反面）", "screen addiction"], ["儿童发展", "child development"], ["健康成长", "healthy growth"], ["亲近自然", "get close to nature"], ["自然教育", "nature education"]], "sentence": "户外是孩子最好的课堂。", "sentenceEn": "The outdoors is children's best classroom."}]};
+
+
+/* ================= 逻辑区 ================= */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800)}
+
+/* 字体调节 */
+function applyFont(v){document.documentElement.style.setProperty('--fs',v+'px');$('#fontRange').value=v;$('#fontSize').textContent=v+'px';localStorage.setItem('kaoyan_fs',v)}
+applyFont(localStorage.getItem('kaoyan_fs')||16);
+$('#btnFont').onclick=()=>$('#fontbar').classList.toggle('show');
+$('#fontRange').oninput=e=>applyFont(e.target.value);
+$('#fontReset').onclick=()=>applyFont(16);
+
+/* 底部导航 */
+$$('nav button').forEach(b=>b.onclick=()=>{
+  $$('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  $$('.page').forEach(p=>p.classList.remove('active'));
+  $('#page-'+b.dataset.p).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* 分段控件 */
+function bindSeg(sel,cb){$$(sel+' button').forEach(b=>b.onclick=()=>{$$(sel+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cb(b.dataset.v)})}
+
+/* ---------- 模板渲染 ---------- */
+let curTplKey='big:chart';
+let curFilter=-1;       // 当前位置筛选：-1=全部，>=0=part索引
+const picked=new Set(); // 存放 item id
+const filled={};        // 下划线填空
+
+// 从 part.name 提取短标签，用于筛选按钮
+function partLabel(name){
+  let s=name.split('·').pop().replace(/^\s*第[\d\-—~、\s]+句\s*/,'').replace(/（[^）]*）/g,'').trim();
+  return s||name;
+}
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function renderBlank(en,id){
+  return escHtml(en).replace(/_{2,}/g,(m,i)=>{
+    const idx=i;return `<span class="blank" data-id="${id}" data-idx="${idx}" title="点击填写">____</span>`
+  });
+}
+function renderTpl(key){
+  const t=DATA.templates[key];if(!t)return;
+  // 生成位置筛选按钮
+  if(curFilter<0||curFilter>=t.parts.length)curFilter=-1;
+  let fh=`<button class="${curFilter===-1?'on':''}" data-f="-1">全部位置</button>`;
+  t.parts.forEach((part,pi)=>{fh+=`<button class="${curFilter===pi?'on':''}" data-f="${pi}">${partLabel(part.name)}</button>`});
+  $('#tplFilter').innerHTML=fh;
+  $$('#tplFilter button').forEach(b=>b.onclick=()=>{
+    curFilter=Number(b.dataset.f);renderTpl(curTplKey);
+    window.scrollTo({top:$('#tplFilter').getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+  });
+  let html=`<div class="card"><h3>${t.name}</h3><div class="tip">${t.tip}</div></div>`;
+  t.parts.forEach((part,pi)=>{
+    if(curFilter!==-1&&curFilter!==pi)return; // 按位置过滤
+    html+=`<div class="card"><h3>${part.name}</h3>${part.tip?`<div class="tip">${part.tip}</div>`:''}`;
+    part.groups.forEach((g,gi)=>{
+      html+=`<div class="grp"><div class="grp-name">${g.name}</div>`;
+      g.items.forEach((it)=>{
+        const [id,tag,en,zh,note,exEn,exZh]=it;
+        const isP=picked.has(id);
+        html+=`<div class="sent ${isP?'picked':''}" data-sent="${id}">
+          <div class="sent-head"><span class="sent-tag">${tag}</span>
+            <div class="sent-en">${renderBlank(en,id)}</div></div>
+          <div class="sent-zh">${zh}</div>
+          <div class="sent-actions">
+            <button class="mini pick" data-act="pick" data-id="${id}">${isP?'✓ 已加入':'＋ 加入作文'}</button>
+            <button class="mini" data-act="detail" data-id="${id}">展开讲解 ▾</button>
+          </div>
+          <div class="sent-detail" id="d-${id}">
+            ${note?`<div class="note">${note}</div>`:''}
+            ${exEn?`<div class="ex-en" style="margin-top:.4rem">${exEn}</div>`:''}
+            ${exZh?`<div class="ex-zh">${exZh}</div>`:''}
+          </div>
+        </div>`;
+      });
+      html+=`</div>`;
+    });
+    html+=`</div>`;
+  });
+  $('#tplList').innerHTML=html;
+  bindTplEvents();updateCount();
+}
+function bindTplEvents(){
+  $$('#tplList [data-act]').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.id;
+    if(b.dataset.act==='pick'){
+      if(picked.has(id)){picked.delete(id);b.textContent='＋ 加入作文';b.closest('.sent').classList.remove('picked')}
+      else{picked.add(id);b.textContent='✓ 已加入';b.closest('.sent').classList.add('picked')}
+      updateCount();
+    }else{
+      const d=$('#d-'+id);d.classList.toggle('open');
+      b.textContent=d.classList.contains('open')?'收起讲解 ▴':'展开讲解 ▾';
+    }
+  });
+  $$('#tplList .blank').forEach(s=>s.onclick=()=>{
+    const id=s.dataset.id;
+    openFill(id,s.dataset.idx);
+  });
+}
+function openFill(id,idx){
+  const modal=$('#commonModal');
+  modal.innerHTML=`<h3>填写空白处</h3>
+    <div class="field"><label>填写内容（如主题词、年份、数据等）</label>
+      <input id="fillInput" value="${escHtml(filled[id]||'')}" placeholder="例如：environmental protection"></div>
+    <div class="hint-sm">同一句中的所有下划线将填入相同内容；如需不同内容，可在“查看作文”里手动修改。</div>
+    <button class="btn" id="btnFillOk">确定</button>`;
+  $('#commonMask').classList.add('show');
+  $('#btnFillOk').onclick=()=>{filled[id]=$('#fillInput').value.trim();$('#commonMask').classList.remove('show');renderTpl(curTplKey);renderEssayIfOpen()};
+}
+$('#commonMask').onclick=e=>{if(e.target.id==='commonMask')$('#commonMask').classList.remove('show')};
+
+function getPickedItems(){
+  const out=[];
+  Object.values(DATA.templates).forEach(t=>t.parts.forEach(p=>p.groups.forEach(g=>g.items.forEach(it=>{if(picked.has(it[0]))out.push(it)}))));
+  return out;
+}
+function essayHtml(){
+  const items=getPickedItems();
+  if(!items.length)return '<div class="essay-para"><span class="ph">还没有选择句子。点击上方「＋ 加入作文」即可拼接。</span></div>';
+  return '<div class="essay-para">'+items.map(it=>{
+    let en=escHtml(it[2]);
+    const f=filled[it[0]];
+    if(f)en=en.replace(/_{2,}/g,f);
+    return en;
+  }).join(' ')+'</div>';
+}
+function renderEssayIfOpen(){if($('#essayArea').style.display!=='none')renderEssay()}
+function renderEssay(){
+  const items=getPickedItems();
+  const words=items.map(it=>it[2].replace(/_{2,}/g,filled[it[0]]||'')).join(' ').trim().split(/\s+/).filter(Boolean).length;
+  $('#essayArea').innerHTML=`<div class="essay-box"><h4>我的作文 · 已选 ${items.length} 句 · 约 ${words} 词</h4>
+    ${essayHtml()}
+    <div class="essay-toolbar">
+      <button class="primary" id="btnCopyEssay">复制作文</button>
+      <button id="btnToScore">复制到评分</button>
+      <button id="btnClearEssay">清空所选</button>
+    </div>
+    <div class="hint-sm">下划线处可点击原句填写；此处仅为句子拼接预览，可在复制后手动润色。</div>
+  </div>`;
+  $('#btnCopyEssay').onclick=()=>copyText(items.map(it=>it[2].replace(/_{2,}/g,filled[it[0]]||'')).join(' '));
+  $('#btnToScore').onclick=()=>{$('#scoreEssay').value=items.map(it=>it[2].replace(/_{2,}/g,filled[it[0]]||'')).join(' ');toast('已带入评分页');$$('nav button').forEach(x=>x.classList.remove('on'));$$('nav button')[2].classList.add('on');$$('.page').forEach(p=>p.classList.remove('active'));$('#page-score').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})};
+  $('#btnClearEssay').onclick=()=>{picked.clear();renderTpl(curTplKey);renderEssay();updateCount()};
+}
+function updateCount(){$('#essayCnt').textContent=`已选 ${picked.size} 句 · 点句子加入作文`}
+$('#btnViewEssay').onclick=()=>{const a=$('#essayArea');const open=a.style.display!=='none';a.style.display=open?'none':'block';$('#btnViewEssay').textContent=open?'查看作文':'收起作文';if(!open)renderEssay()};
+
+function copyText(t){
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(()=>toast('已复制')).catch(()=>fallbackCopy(t))}
+  else fallbackCopy(t);
+}
+function fallbackCopy(t){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('已复制')}catch(e){toast('复制失败，请手动选择')}document.body.removeChild(ta)}
+
+bindSeg('#segBigSmall',v=>{
+  if(v==='big'){$('#bigWrap').style.display='block';$('#smallWrap').style.display='none';curTplKey='big:'+$('#segBigType button.on').dataset.v}
+  else{$('#bigWrap').style.display='none';$('#smallWrap').style.display='block';curTplKey='small:'+$('#segSmallType button.on').dataset.v}
+  curFilter=-1;renderTpl(curTplKey);
+});
+bindSeg('#segBigType',v=>{curTplKey='big:'+v;curFilter=-1;renderTpl(curTplKey)});
+bindSeg('#segSmallType',v=>{curTplKey='small:'+v;curFilter=-1;renderTpl(curTplKey)});
+
+/* ---------- 真题页 ---------- */
+function renderZt(type){
+  const arr=DATA.zhenti[type]||[];let html='<div class="card"><h3>'+(type==='big'?'大作文真题汇总（英一 2001—2026 · 英二 2010—2026）':type==='small'?'小作文真题汇总（英一/英二）':'历年主题词速查（核心 / 相关 / 拓展 / 主题句）')+'</h3></div>';
+  if(type==='topic'){
+    arr.forEach(t=>{
+      html+=`<div class="card"><div class="wg-head">${t.y} · ${t.exam} · ${t.kind}<small>${t.title} · ${t.topicEn}</small></div>
+        <div class="word-grid" style="grid-template-columns:1fr;margin-top:.6rem">`;
+      t.words.forEach(w=>{html+=`<div class="wrow"><div class="zh">${w[0]}</div><div class="en">${w[1]}</div></div>`});
+      html+=`</div>${t.sentence?`<div class="wsentence">${t.sentence}<span class="en">${t.sentenceEn||''}</span></div>`:''}</div>`;
+    });
+  }else{
+    const groups={};arr.forEach(x=>{(groups[x.exam]=groups[x.exam]||[]).push(x)});
+    Object.keys(groups).forEach(ex=>{
+      html+=`<div class="card"><h3>${ex}</h3>`;
+      groups[ex].forEach(x=>{
+        const bc=x.kind.includes('图表')||x.kind.includes('柱状')||x.kind.includes('饼')||x.kind.includes('表格')||x.kind.includes('折线')?'b-red':
+                 (x.kind.includes('图画')?'b-gold':'b-green');
+        html+=`<div class="list-item"><span class="badge ${bc}">${x.kind}</span>
+          <div class="li-body"><div class="li-title">${x.year} 年${x.exam.includes('英语')?'':''}${x.tag?' · '+x.tag:''}</div>
+          ${x.topicEn?`<div class="li-en">${x.topicEn}</div>`:''}${x.topicZh?`<div class="li-zh">${x.topicZh}</div>`:''}</div></div>`;
+      });
+      html+=`</div>`;
+    });
+  }
+  $('#ztList').innerHTML=html;
+}
+bindSeg('#segZtType',v=>renderZt(v));
+
+/* ---------- AI 配置 ---------- */
+function loadCfg(){
+  try{const c=JSON.parse(localStorage.getItem('kaoyan_cfg')||'{}');
+    if(c.provider)$('#cfgProvider').value=c.provider;
+    if(c.base)$('#cfgBase').value=c.base;
+    if(c.model){ if([...$('#cfgModel').options].some(o=>o.value===c.model))$('#cfgModel').value=c.model; else{$('#cfgModel').value='__custom__';$('#cfgModelCustom').style.display='block';$('#cfgModelCustom').value=c.model} }
+    if(c.key)$('#cfgKey').value=c.key;
+  }catch(e){}
+}
+loadCfg();
+$('#btnSet').onclick=()=>{$('#setMask').classList.add('show')};
+$('#setMask').onclick=e=>{if(e.target.id==='setMask')$('#setMask').classList.remove('show')};
+$('#cfgProvider').onchange=e=>{if(e.target.value==='custom'){$('#cfgBase').value=''}else{$('#cfgBase').value='https://api.deepseek.com'}};
+$('#cfgModel').onchange=e=>{$('#cfgModelCustom').style.display=e.target.value==='__custom__'?'block':'none'};
+function getCfg(){
+  let model=$('#cfgModel').value;if(model==='__custom__')model=$('#cfgModelCustom').value.trim();
+  return{base:$('#cfgBase').value.trim().replace(/\/$/,''),key:$('#cfgKey').value.trim(),model};
+}
+$('#btnSaveCfg').onclick=()=>{
+  const c=getCfg();
+  if(!c.key){toast('请先填写 API Key');return}
+  localStorage.setItem('kaoyan_cfg',JSON.stringify({provider:$('#cfgProvider').value,base:c.base,model:c.model,key:c.key}));
+  $('#setMask').classList.remove('show');toast('设置已保存');
+};
+$('#btnTestCfg').onclick=async()=>{
+  const c=getCfg();if(!c.key){toast('请先填写 API Key');return}
+  $('#btnTestCfg').textContent='测试中…';$('#btnTestCfg').disabled=true;
+  try{
+    const r=await callAIApi([{role:'user',content:'回复“连接成功”三个字'}],c);
+    toast('连接成功：'+r.slice(0,30));
+  }catch(e){toast('连接失败：'+e.message)}
+  $('#btnTestCfg').textContent='测试连接';$('#btnTestCfg').disabled=false;
+};
+
+/* AI 调用（OpenAI 兼容，流式） */
+async function callAIApi(messages,cfg,onChunk){
+  cfg=cfg||getCfg();
+  if(!cfg.key)throw new Error('未配置 API Key');
+  const url=cfg.base+'/chat/completions';
+  const body={model:cfg.model,messages,stream:!!onChunk,temperature:0.7};
+  const resp=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+cfg.key},body:JSON.stringify(body)});
+  if(!resp.ok){let msg='HTTP '+resp.status;try{const j=await resp.json();msg=j.error?.message||msg}catch(e){}throw new Error(msg)}
+  if(!onChunk){const j=await resp.json();return j.choices?.[0]?.message?.content||''}
+  const reader=resp.body.getReader(),dec=new TextDecoder();let buf='',full='';
+  while(true){const{done,value}=await reader.read();if(done)break;buf+=dec.decode(value,{stream:true});
+    const lines=buf.split('\n');buf=lines.pop()||'';
+    for(const line of lines){const s=line.trim();if(!s.startsWith('data:'))continue;const d=s.slice(5).trim();if(d==='[DONE]')continue;
+      try{const j=JSON.parse(d);const t=j.choices?.[0]?.delta?.content||'';if(t){full+=t;onChunk(t)}}catch(e){}
+    }
+  }
+  return full;
+}
+
+/* 简易 Markdown 渲染 */
+function mdToHtml(md){
+  let h=escHtml(md);
+  h=h.replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h2>$1</h2>').replace(/^# (.*)$/gm,'<h1>$1</h1>');
+  h=h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  h=h.replace(/`(.+?)`/g,'<code>$1</code>');
+  h=h.split('\n').map(l=>{if(/^[-*] /.test(l))return '<li>'+l.replace(/^[-*] /,'')+'</li>';return l}).join('\n');
+  h=h.replace(/(<li>.*<\/li>\n?)+/g,m=>'<ul>'+m+'</ul>');
+  h=h.split(/\n{2,}/).map(b=>{if(/^<(h\d|ul)/.test(b.trim()))return b;return '<p>'+b.replace(/\n/g,'<br>')+'</p>'}).join('');
+  return h;
+}
+
+/* ---------- 评分 ---------- */
+$('#btnScore').onclick=async()=>{
+  const essay=$('#scoreEssay').value.trim();
+  if(!essay){toast('请先输入作文');return}
+  const btn=$('#btnScore');btn.disabled=true;btn.textContent='评分中…';
+  const sys=`你是一位资深考研英语阅卷专家。请依据中国考研英语大纲写作要求，对考生的作文进行专业评分与点评。
+考试类型：${$('#scoreExam').value}
+作文题型：${$('#scoreKind').value}
+高分准则：卷面整洁、结构清晰、语言丰富、拼写正确、契合主题。
+请严格按以下结构输出（用中文，Markdown 格式）：
+# 评分结果
+**总分：XX / 满分**（先给总分）
+## 分项评价
+- 内容要点（是否切题、论据是否充分）
+- 结构组织（分段、衔接、逻辑）
+- 语言表达（词汇、句式、语法）
+- 字数与卷面
+## 主要优点
+（2-3点）
+## 问题与不足
+（2-4点，指出具体句子或语法错误）
+## 修改建议
+（给出可操作的改进方向与1-2句示范改写）
+## 参考范文片段（可选）
+（针对本题给一段改进示例英文）
+请客观、具体、有建设性。`;
+  const prompt=$('#scorePrompt').value.trim();
+  const user=`作文题目/要求：${prompt||'（未提供，请根据作文内容推断）'}\n\n考生作文：\n${essay}`;
+  $('#scoreResult').innerHTML='<div class="score-res"><div class="md-body" id="scoreMd">AI 正在评分，请稍候…</div></div>';
+  try{
+    let full='';const box=$('#scoreMd');
+    await callAIApi([{role:'system',content:sys},{role:'user',content:user}],null,t=>{full+=t;box.innerHTML=mdToHtml(full)+'▍'});
+    box.innerHTML=mdToHtml(full);
+  }catch(e){$('#scoreResult').innerHTML=`<div class="score-res"><div class="md-body" style="color:var(--red)">评分失败：${escHtml(e.message)}<br>请检查 API Key、模型名与网络连接。</div></div>`}
+  btn.disabled=false;btn.textContent='开始 AI 评分';
+};
+
+/* ---------- AI 问答 ---------- */
+const KB=`你是「AI归来」考研英语作文模板专用助手。以下是你掌握的资料知识（回答必须优先依据这些内容，不要编造）：
+【大作文结构】图表/图画/文字作文本质都是议论文，只是第一段不同，第二三段通用。
+- 图表第一段：总体描述+细节描述+社会现象（动态单方向/多方向、静态占比、双图表、万能场景）。
+- 图画第一段：图画描述(分类拆分组合法：环境+基本动作+主体，主要动作doing，with细节)+主题阐述(某事很重要)。
+- 文字第一段：文字改写+表明态度。
+- 通用第二段：过渡句+原因123（方案一举例论证个人路线；方案二宾语从句+定语从句群众路线；方案三主语/宾语/同位语从句+六大方面）。
+- 通用第三段：总结全文+具体措施(政府/公民/个人/媒体/家庭五角度)+畅想未来。
+【六大方面】社会(发展/经济/服务/和谐)、自然(持续/保护/和谐)、文化(传承/交流/包容/繁荣)、个人(成长/健康/学习/实现)、交流(沟通/连接/和谐)、科技(创新/转型/赋能)。
+【小作文】书信(被动回复信背景提要+来信意图/公务信函自我介绍+意图)、通知告示、纪要。核心是第二段50句，弱化信件类型区分，强化功能表达。
+【高分准则】卷面整洁、结构清晰、语言丰富、拼写正确、契合主题。
+【字数】英一大作文160-200词/20分，英二大作文约150词/15分，小作文约100词/10分。
+请简短、实用地回答学生问题，多给可直接套用的句子。`;
+function appendMsg(role,text){
+  const d=document.createElement('div');d.className='msg '+(role==='user'?'user':'');
+  d.innerHTML=`<div class="av">${role==='user'?'我':'AI'}</div><div class="bubble"><pre></pre></div>`;
+  d.querySelector('pre').textContent=text;$('#chatLog').appendChild(d);$('#chatLog').scrollTop=$('#chatLog').scrollHeight;return d;
+}
+async function sendChat(text){
+  if(!text.trim())return;
+  appendMsg('user',text);$('#chatInput').value='';
+  const d=appendMsg('ai','');const pre=d.querySelector('pre');let full='';
+  try{
+    await callAIApi([{role:'system',content:KB},{role:'user',content:text}],null,t=>{full+=t;pre.textContent=full;$('#chatLog').scrollTop=$('#chatLog').scrollHeight});
+    if(!full)pre.textContent='（无返回内容）';
+  }catch(e){pre.textContent='调用失败：'+e.message+'。请检查 ⚙ 中的 API 配置。'}
+}
+$('#btnSend').onclick=()=>sendChat($('#chatInput').value);
+$('#chatInput').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat($('#chatInput').value)}};
+$$('#quickQ button').forEach(b=>b.onclick=()=>sendChat(b.textContent));
+
+/* 初始化 */
+renderTpl(curTplKey);
+renderZt('big');
+</script>
+</body>
+</html>
